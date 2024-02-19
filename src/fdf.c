@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/19 23:02:01 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/19 23:36:52 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
     t_map map;
     
     check_argument_count(argc);
+    ft_memset(&map, 0, sizeof(t_map));
     parse_map(argv[1], &map);
     return (0);
 }

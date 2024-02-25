@@ -1,3 +1,15 @@
-# Minilibx
+# Minilibx docs
 
 https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+
+# Minilibx usage examples
+
+https://www.youtube.com/watch?v=9eAPbNUQD1Y&t=7s
+
+# X server
+
+https://www.youtube.com/watch?v=866-MpRATnM
+
+# Project guides
+
+https://medium.com/@youbihi129/42-the-network-fdf-fil-de-fer-project-roadmap-464be06d6f15

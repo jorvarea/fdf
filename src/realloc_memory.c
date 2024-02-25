@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:00:02 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 16:47:39 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:13:32 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	realloc_map_colors(t_map *map)
 	new_allocated_colors = map->allocated_colors * 2;
 	new_colors = malloc(new_allocated_colors * sizeof(unsigned int));
 	check_memory_allocation_error(new_colors);
+	ft_memset(new_colors, 0, new_allocated_colors * sizeof(int));
 	copy_colors(map, new_colors);
 	free_color_memory(map);
 	map->allocated_colors = new_allocated_colors;

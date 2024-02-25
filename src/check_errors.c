@@ -6,11 +6,20 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:24:00 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 03:09:26 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:33:23 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	check_argument_count_error(int argc)
+{
+	if (argc != 2)
+	{
+		ft_printf("Error: Wrong argument count\n");
+		exit(1);
+	}
+}
 
 void	check_extension_error(char *filename)
 {

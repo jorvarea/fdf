@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 17:33:45 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:33:42 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_map
 }					t_map;
 
 // check_errors.c
+void				check_argument_count_error(int argc);
 void				check_extension_error(char *filename);
 void				check_open_error(int fd);
 void				check_memory_allocation_error(void *ptr);

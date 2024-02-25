@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:27:23 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 02:41:47 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:26:30 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void allocate_initial_map_memory(t_map *map)
 {
     int i;
     
+    map->color = malloc(INITIAL_COLORS_DIMENSION * sizeof(int));
+    check_memory_allocation_error(map->color);
     map->data = malloc(INITIAL_MAP_DIMENSION * sizeof(int*));
     check_memory_allocation_error(map->data);
     i = 0;
@@ -27,9 +29,10 @@ void allocate_initial_map_memory(t_map *map)
     }
     map->allocated_rows = INITIAL_MAP_DIMENSION;
     map->allocated_cols = INITIAL_MAP_DIMENSION;
+    map->allocated_colors = INITIAL_COLORS_DIMENSION;
 }
 
-void free_map_memory(t_map *map)
+void free_data_memory(t_map *map)
 {
     int i;
 
@@ -40,64 +43,14 @@ void free_map_memory(t_map *map)
     map->data = NULL;
 }
 
-void copy_data(t_map *map, int **new_data)
+void free_color_memory(t_map *map)
 {
-    int i;
-    int j;
-
-    i = 0;
-    while (i < map->nrows)
-    {
-        j = 0;
-        while (j < map->ncols)
-        {
-            new_data[i][j] = map->data[i][j];
-            j++;
-        }
-        i++;
-    }
+    free(map->color);
+    map->color = NULL;
 }
 
-void realloc_map_rows(t_map *map)
+void free_map_memory(t_map *map)
 {
-    int new_allocated_rows;
-    int **new_data;
-    int i;
-    
-    new_allocated_rows = map->allocated_rows * 2;
-    new_data = malloc(new_allocated_rows * sizeof(int*));
-    check_memory_allocation_error(new_data);
-    i = 0;
-    while (i < new_allocated_rows)
-    {
-        new_data[i] = malloc(map->allocated_cols * sizeof(int));
-        check_memory_allocation_error(new_data[i]);
-        i++;
-    }
-    copy_data(map, new_data);
-    free_map_memory(map);
-    map->allocated_rows = new_allocated_rows;
-    map->data = new_data;
-}
-
-void realloc_map_cols(t_map *map)
-{
-    int new_allocated_cols;
-    int **new_data;
-    int i;
-
-    new_allocated_cols = map->allocated_cols * 2;
-    new_data = malloc(map->allocated_rows * sizeof(int*));
-    check_memory_allocation_error(new_data);
-    i = 0;
-    while (i < map->allocated_rows)
-    {
-        new_data[i] = malloc(new_allocated_cols * sizeof(int));
-        check_memory_allocation_error(new_data[i]);
-        i++;
-    }
-    copy_data(map, new_data);
-    free_map_memory(map);
-    map->allocated_cols = new_allocated_cols;
-    map->data = new_data;
+    free_data_memory(map);
+    free_color_memory(map);
 }

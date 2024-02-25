@@ -3,7 +3,7 @@ GREEN					= \033[0;32m
 YELLOW					= \033[0;33m
 NO_COLOR				= \033[0m
 
-NAME					= fdf
+NAME					= bin/fdf
 
 LIBFT_DIR 				= lib/libft
 GET_NEXT_LINE_DIR		= lib/get_next_line

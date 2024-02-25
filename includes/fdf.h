@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 14:29:03 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:48:54 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@
 typedef struct s_map {
     int nrows;
     int ncols;
-    int ncolors;
     int **data;
-    int *color;
+    unsigned int *color;
     int allocated_rows;
     int allocated_cols;
     int allocated_colors;
@@ -50,7 +49,7 @@ void free_map_memory(t_map *map);
 void copy_data(t_map *map, int **new_data);
 void realloc_map_rows(t_map *map);
 void realloc_map_cols(t_map *map);
-void copy_colors(t_map *map, int *new_colors);
+void copy_colors(t_map *map, unsigned int *new_colors);
 void realloc_map_colors(t_map *map);
 
 // parse_map.c

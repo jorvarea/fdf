@@ -6,11 +6,32 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:02:05 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 02:41:23 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:09:19 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void store_color(char *element, t_map *map, int data_value)
+{
+    char *color;
+    int i;
+
+    color = NULL;
+    i = 0;
+    while (element[i] && !color)
+    {
+        if (element[i] == ',')
+            color = &element[i + 1];
+        i++;
+    }
+    if (color)
+    {
+        if (data_value > map->allocated_colors - 1)
+            realloc_map_colors(map);
+        map->color[data_value] = ft_atoi_hex(color);
+    }
+}
 
 static void store_elements(char *line, t_map *map)
 {
@@ -26,6 +47,7 @@ static void store_elements(char *line, t_map *map)
         if (column + 1 > map->allocated_cols)
             realloc_map_cols(map);
         map->data[map->nrows][column] = ft_atoi(elements[column]);
+        store_color(elements[column], map, map->data[map->nrows][column]);
         free(elements[column]);
         column++;
     }

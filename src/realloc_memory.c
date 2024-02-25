@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:00:02 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 14:27:23 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:47:39 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void realloc_map_cols(t_map *map)
     map->data = new_data;
 }
 
-void copy_colors(t_map *map, int *new_colors)
+void copy_colors(t_map *map, unsigned int *new_colors)
 {
     int i;
 
     i = 0;
-    while (i < map->ncolors)
+    while (i < map->allocated_colors)
     {
         new_colors[i] = map->color[i];
         i++;
@@ -89,10 +89,10 @@ void copy_colors(t_map *map, int *new_colors)
 void realloc_map_colors(t_map *map)
 {
     int new_allocated_colors;
-    int *new_colors;
+    unsigned int *new_colors;
     
     new_allocated_colors = map->allocated_colors * 2;
-    new_colors = malloc(new_allocated_colors * sizeof(int));
+    new_colors = malloc(new_allocated_colors * sizeof(unsigned int));
     check_memory_allocation_error(new_colors);
     copy_colors(map, new_colors);
     free_color_memory(map);

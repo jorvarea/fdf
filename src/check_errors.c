@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:24:00 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 00:24:29 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 03:09:26 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void check_open_error(int fd)
 {
     if (fd == -1)
     {
-        ft_printf("Error: Couldn't open file\n");
+        perror("Error");
         exit(1);
     }
 }

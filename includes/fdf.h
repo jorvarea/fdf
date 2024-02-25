@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 02:45:28 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 03:08:45 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <math.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # define INITIAL_MAP_DIMENSION 10
 

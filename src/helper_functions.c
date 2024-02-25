@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 02:45:42 by jorvarea         ###   ########.fr       */
+/*   Created: 2024/02/25 02:43:03 by jorvarea          #+#    #+#             */
+/*   Updated: 2024/02/25 02:44:49 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void check_argument_count(int argc)
+void print_map_array(t_map *map)
 {
-    if (argc != 2)
-    {
-        ft_printf("Error: Wrong argument count\n");
-        exit(1);
-    }
-}
+    int i;
+    int j;
 
-int main(int argc, char **argv)
-{
-    t_map map;
-    
-    check_argument_count(argc);
-    ft_memset(&map, 0, sizeof(t_map));
-    parse_map(argv[1], &map);
-    print_map_array(&map);
-    free_map_memory(&map);
-    return (0);
+    i = 0;
+    while (i < map->nrows)
+    {
+        j = 0;
+        while (j < map->ncols)
+        {
+            ft_printf("%d ", map->data[i][j]);
+            j++;
+        }
+        ft_printf("\n");
+        i++;
+    }
 }

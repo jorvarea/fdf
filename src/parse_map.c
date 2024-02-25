@@ -6,56 +6,32 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:02:05 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/19 23:50:56 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 02:41:23 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void check_valid_extension(char *filename)
-{
-    char *extension;
-    int i;
-
-    i = 0;
-    extension = NULL;
-    while(filename[i] != '\0')
-    {
-        if (filename[i] == '.')
-            extension = &filename[i + 1];
-        i++;
-    }
-    if (extension == NULL || ft_strncmp(extension, "fdf", 3) != 0)
-    {
-        ft_printf("Error: Invalid file extension\n");
-        exit(1);
-    }
-}
-
-void check_valid_file(int fd)
-{
-    if (fd == -1)
-    {
-        ft_printf("Error: Couldn't open file\n");
-        exit(1);
-    }
-}
-
-void store_elements(char *line, t_map *map)
+static void store_elements(char *line, t_map *map)
 {
     char **elements;
     int column;
 
+    if (map->nrows + 1 > map->allocated_rows)
+        realloc_map_rows(map);
     elements = ft_split(line, ' ');
     column = 0;
     while (elements[column] != NULL)
     {
-        // need to allocate memory to map->data before doing this
+        if (column + 1 > map->allocated_cols)
+            realloc_map_cols(map);
         map->data[map->nrows][column] = ft_atoi(elements[column]);
         free(elements[column]);
         column++;
     }
     map->nrows++;
+    if (map->ncols == 0)
+        map->ncols = column;
     free(elements);
 }
 
@@ -64,9 +40,10 @@ void parse_map(char *filename, t_map *map)
     int fd;
     char *line;
     
-    check_valid_extension(filename);
+    check_extension_error(filename);
     fd = open(filename, O_RDONLY);
-    check_valid_file(fd);
+    check_open_error(fd);
+    allocate_initial_map_memory(map);
     line = get_next_line(fd);
     while (line != NULL)
     {

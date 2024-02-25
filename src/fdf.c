@@ -12,24 +12,24 @@
 
 #include "fdf.h"
 
-void check_argument_count(int argc)
+void	check_argument_count(int argc)
 {
-    if (argc != 2)
-    {
-        ft_printf("Error: Wrong argument count\n");
-        exit(1);
-    }
+	if (argc != 2)
+	{
+		ft_printf("Error: Wrong argument count\n");
+		exit(1);
+	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_map map;
-    
-    check_argument_count(argc);
-    ft_memset(&map, 0, sizeof(t_map));
-    parse_map(argv[1], &map);
-    print_map_array(&map);
-    print_colors(&map);
-    free_map_memory(&map);
-    return (0);
+	t_map	map;
+
+	check_argument_count(argc);
+	ft_memset(&map, 0, sizeof(t_map));
+	parse_map(argv[1], &map);
+	print_map_array(&map);
+	print_colors(&map);
+	free_map_memory(&map);
+	return (0);
 }

@@ -12,40 +12,40 @@
 
 #include "fdf.h"
 
-void check_extension_error(char *filename)
+void	check_extension_error(char *filename)
 {
-    char *extension;
-    int i;
+	char	*extension;
+	int		i;
 
-    i = 0;
-    extension = NULL;
-    while(filename[i] != '\0')
-    {
-        if (filename[i] == '.')
-            extension = &filename[i + 1];
-        i++;
-    }
-    if (extension == NULL || ft_strncmp(extension, "fdf", 3) != 0)
-    {
-        ft_printf("Error: Invalid file extension\n");
-        exit(1);
-    }
+	i = 0;
+	extension = NULL;
+	while (filename[i] != '\0')
+	{
+		if (filename[i] == '.')
+			extension = &filename[i + 1];
+		i++;
+	}
+	if (extension == NULL || ft_strncmp(extension, "fdf", 3) != 0)
+	{
+		ft_printf("Error: Invalid file extension\n");
+		exit(1);
+	}
 }
 
-void check_open_error(int fd)
+void	check_open_error(int fd)
 {
-    if (fd == -1)
-    {
-        perror("Error");
-        exit(1);
-    }
+	if (fd == -1)
+	{
+		perror("Error");
+		exit(1);
+	}
 }
 
-void check_memory_allocation_error(void *ptr)
+void	check_memory_allocation_error(void *ptr)
 {
-    if (ptr == NULL)
-    {
-        ft_printf("Error: Memory allocation failed\n");
-        exit(1);
-    }
+	if (ptr == NULL)
+	{
+		ft_printf("Error: Memory allocation failed\n");
+		exit(1);
+	}
 }

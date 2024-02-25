@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 16:48:54 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 17:33:45 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void parse_map(char *filename, t_map *map);
 
 // helper_functions.c
 void print_map_array(t_map *map);
+void print_colors(t_map *map);
 
 #endif

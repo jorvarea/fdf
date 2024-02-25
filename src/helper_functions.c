@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 02:43:03 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 02:44:49 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/25 17:33:54 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void print_map_array(t_map *map)
             j++;
         }
         ft_printf("\n");
+        i++;
+    }
+}
+
+void print_colors(t_map *map)
+{
+    int i;
+
+    i = 0;
+    while(i < map->allocated_colors)
+    {
+        ft_printf("%d: 0x%X\n", i, map->color[i]);
         i++;
     }
 }

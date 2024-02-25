@@ -12,6 +12,7 @@ PRINTF_DIR 				= lib/printf
 LIBFT 					= $(LIBFT_DIR)/libft.a
 GET_NEXT_LINE			= $(GET_NEXT_LINE_DIR)/get_next_line.a
 PRINTF 					= $(PRINTF_DIR)/printf.a
+LIBRARIES               = $(LIBFT) $(PRINTF) $(GET_NEXT_LINE)
 
 CC						= gcc
 CFLAGS 					= -Wall -Werror -Wextra -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_DIR)
@@ -21,10 +22,10 @@ OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(PRINTF) $(GET_NEXT_LINE) $(OBJECT_FILES) includes/fdf.h
+$(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NC}"
 	@mkdir -p bin
-	@$(CC) $(CFLAGS) -o bin/$(NAME) $(OBJECT_FILES) $(LIBFT) $(PRINTF) $(GET_NEXT_LINE)
+	@$(CC) $(CFLAGS) -o bin/$(NAME) $(OBJECT_FILES) $(LIBRARIES)
 
 $(LIBFT):
 	@echo "${GREEN}Making libft...${NC}"

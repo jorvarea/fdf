@@ -25,7 +25,7 @@ all: $(NAME)
 $(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NC}"
 	@mkdir -p bin
-	@$(CC) $(CFLAGS) -o bin/$(NAME) $(OBJECT_FILES) $(LIBRARIES)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECT_FILES) $(LIBRARIES)
 
 $(LIBFT):
 	@echo "${GREEN}Making libft...${NC}"

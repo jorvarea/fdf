@@ -27,8 +27,9 @@ OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 
 ## Compiler settings ##
 CC						= gcc
-INCLUDE_HEADERS			= -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_DIR) -I$(MLX42_DIR)
+INCLUDE_HEADERS			= -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_DIR) -I$(MLX42_DIR)/include/MLX42
 CFLAGS 					= -Wall -Werror -Wextra $(INCLUDE_HEADERS)
+MLX42_FLAGS				= -ldl -lglfw -pthread -lm
 
 all: submodules $(NAME)
 
@@ -39,7 +40,7 @@ submodules:
 $(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NO_COLOR}"
 	@mkdir -p bin
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECT_FILES) $(LIBRARIES)
+	@$(CC) $(CFLAGS) $(MLX42_FLAGS) -o $(NAME) $(OBJECT_FILES) $(LIBRARIES)
 
 $(LIBFT):
 	@echo "${GREEN}Making libft...${NO_COLOR}"

@@ -9,6 +9,7 @@ LIBFT_DIR 				= lib/libft
 GET_NEXT_LINE_DIR		= lib/get_next_line
 PRINTF_DIR 				= lib/printf
 MLX42_DIR				= lib/MLX42
+LIBRARIES_DIR           = $(LIBFT_DIR) $(PRINTF_DIR) $(GET_NEXT_LINE_DIR) $(MLX42_DIR)
 
 LIBFT 					= $(LIBFT_DIR)/libft.a
 GET_NEXT_LINE			= $(GET_NEXT_LINE_DIR)/get_next_line.a
@@ -26,7 +27,7 @@ OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 all: submodules $(NAME)
 
 submodules:
-	@if [ -z "$(shell ls lib)" ]; then \
+	@if [ -z "$(shell ls $(LIBRARIES_DIR))" ]; then \
 		echo "${YELLOW}Initializing and updating submodules...${NO_COLOR}"; \
 		git submodule init; \
 		git submodule update; \

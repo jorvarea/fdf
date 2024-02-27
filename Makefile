@@ -1,28 +1,34 @@
+## Color definitions for echo ##
 RED						= \033[0;31m
 GREEN					= \033[0;32m
 YELLOW					= \033[0;33m
 NO_COLOR				= \033[0m
 
+## Main target ##
 NAME					= bin/fdf
 
+## Directories ##
 LIBFT_DIR 				= lib/libft
 GET_NEXT_LINE_DIR		= lib/get_next_line
 PRINTF_DIR 				= lib/printf
 MLX42_DIR				= lib/MLX42
 LIBRARIES_DIR           = $(LIBFT_DIR) $(PRINTF_DIR) $(GET_NEXT_LINE_DIR) $(MLX42_DIR)
 
+## Library files ##
 LIBFT 					= $(LIBFT_DIR)/libft.a
 GET_NEXT_LINE			= $(GET_NEXT_LINE_DIR)/get_next_line.a
 PRINTF 					= $(PRINTF_DIR)/printf.a
 MLX42					= $(MLX42_DIR)/build/libmlx42.a
 LIBRARIES               = $(LIBFT) $(PRINTF) $(GET_NEXT_LINE) $(MLX42)
 
+## Source and object files ##
+SOURCE_FILES   			= $(wildcard src/*.c) # Change this eventually
+OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
+
+## Compiler settings ##
 CC						= gcc
 INCLUDE_HEADERS			= -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_DIR) -I$(MLX42_DIR)
 CFLAGS 					= -Wall -Werror -Wextra $(INCLUDE_HEADERS)
-
-SOURCE_FILES   			= $(wildcard src/*.c) # Change this eventually
-OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 
 all: submodules $(NAME)
 

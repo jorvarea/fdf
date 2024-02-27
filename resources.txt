@@ -14,6 +14,10 @@ https://www.youtube.com/watch?v=866-MpRATnM
 
 https://www.youtube.com/watch?v=4J5snV2wjtw
 
+# MLX42
+
+https://github.com/codam-coding-college/MLX42
+
 # Project guides
 
 https://medium.com/@youbihi129/42-the-network-fdf-fil-de-fer-project-roadmap-464be06d6f15

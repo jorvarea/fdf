@@ -23,7 +23,14 @@ CFLAGS 					= -Wall -Werror -Wextra $(INCLUDE_HEADERS)
 SOURCE_FILES   			= $(wildcard src/*.c) # Change this eventually
 OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 
-all: $(NAME)
+all: submodules $(NAME)
+
+submodules:
+	@if [ -z "$(shell ls lib)" ]; then \
+		echo "${YELLOW}Initializing and updating submodules...${NO_COLOR}"; \
+		git submodule init; \
+		git submodule update; \
+	fi
 
 $(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NO_COLOR}"
@@ -71,4 +78,4 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all submodules clean fclean re

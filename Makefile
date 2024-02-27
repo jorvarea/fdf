@@ -27,11 +27,8 @@ OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 all: submodules $(NAME)
 
 submodules:
-	@if [ -z "$(shell ls $(LIBRARIES_DIR))" ]; then \
-		echo "${YELLOW}Initializing and updating submodules...${NO_COLOR}"; \
-		git submodule init; \
-		git submodule update; \
-	fi
+	@git submodule init
+	@git submodule update
 
 $(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NO_COLOR}"

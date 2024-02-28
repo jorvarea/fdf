@@ -6,23 +6,66 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/28 20:44:19 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:24:28 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	main(void)
+/*
+int	main(int argc, char **argv)
 {
-	//t_map	map;
-	mlx_t	*window;
-
-	//check_argument_count_error(argc);
-	//ft_memset(&map, 0, sizeof(t_map));
-	//parse_map(argv[1], &map);
-	window = mlx_init(1000, 1000, "Test Window", true);
-	mlx_loop(window);
-	mlx_terminate(window);
-	//free_map_memory(&map);
+	t_map	map;
+	
+	check_argument_count_error(argc);
+	ft_memset(&map, 0, sizeof(t_map));
+	parse_map(argv[1], &map);
+	free_map_memory(&map);
 	return (0);
+}
+*/
+#define WIDTH 1000
+#define HEIGHT 1000
+
+// Exit the program as failure.
+static void ft_error(void)
+{
+	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
+
+// Print the window width and height.
+static void ft_hook(void* param)
+{
+	const mlx_t* mlx = param;
+
+	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+}
+
+int32_t	main(void)
+{
+
+	// MLX allows you to define its core behaviour before startup.
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+	if (!mlx)
+		ft_error();
+
+	/* Do stuff */
+
+	// Create and display the image.
+	mlx_image_t* img = mlx_new_image(mlx, 1000, 1000);
+	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
+		ft_error();
+
+	// Even after the image is being displayed, we can still modify the buffer.
+	for (int i = 450; i < 550; i++)
+		for (int j = 450; j < 550; j++)
+			mlx_put_pixel(img, i, j, 0xFF0000FF);
+
+	// Register a hook and pass mlx as an optional param.
+	// NOTE: Do this before calling mlx_loop!
+	mlx_loop_hook(mlx, ft_hook, mlx);
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_SUCCESS);
 }

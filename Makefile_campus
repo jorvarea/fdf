@@ -13,13 +13,17 @@ GET_NEXT_LINE_DIR		= lib/get_next_line
 PRINTF_DIR 				= lib/printf
 LIBRARIES_DIR           = $(LIBFT_DIR) $(PRINTF_DIR) $(GET_NEXT_LINE_DIR)
 
+## MLX42 ##
+MLX42 					= /sgoinfre/shared/MLX42/libmlx42.a
+MLX42_HEADER_DIR		= /sgoinfre/shared/MLX42/include/MLX42
+GLFW					= /Users/jorvarea/bin/glfw-3.4.bin.MACOS/lib-x86_64/libglfw3.a
+GLFW_HEADER_DIR			= /Users/jorvarea/bin/glfw-3.4.bin.MACOS/include/GLFW
+
 ## Library files ##
 LIBFT 					= $(LIBFT_DIR)/libft.a
 GET_NEXT_LINE			= $(GET_NEXT_LINE_DIR)/get_next_line.a
 PRINTF 					= $(PRINTF_DIR)/printf.a
-MLX42 					= /sgoinfre/shared/MLX42/libmlx42.a
-MLX42_HEADER_DIR		= /sgoinfre/shared/MLX42/include/MLX42
-LIBRARIES               = $(LIBFT) $(PRINTF) $(GET_NEXT_LINE) $(MLX42)
+LIBRARIES               = $(LIBFT) $(PRINTF) $(GET_NEXT_LINE) $(GLFW) $(MLX42)
 
 ## Source and object files ##
 SOURCE_FILES   			= $(wildcard src/*.c) # Change this eventually
@@ -27,7 +31,8 @@ OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 
 ## Compiler settings ##
 CC						= gcc
-INCLUDE_HEADERS			= -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_DIR) -I$(MLX42_HEADER_DIR)
+INCLUDE_HEADERS			= -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_DIR) -I$(MLX42_HEADER_DIR) -I$(GLFW_HEADER_DIR)
+MLX42_FLAGS				= -ldl -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS 					= -Wall -Werror -Wextra $(INCLUDE_HEADERS)
 
 all: submodules $(NAME)
@@ -39,7 +44,7 @@ submodules:
 $(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NO_COLOR}"
 	@mkdir -p bin
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECT_FILES) $(LIBRARIES)
+	@$(CC) $(CFLAGS) $(MLX42_FLAGS) -o $(NAME) $(OBJECT_FILES) $(LIBRARIES)
 
 $(LIBFT):
 	@echo "${GREEN}Making libft...${NO_COLOR}"

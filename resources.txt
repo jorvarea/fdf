@@ -22,6 +22,12 @@ https://github.com/codam-coding-college/MLX42
 
 https://www.youtube.com/watch?v=eoXn6nwV694
 
+# Algorithms for drawing lines on pixel map
+
+https://www.javatpoint.com/computer-graphics-bresenhams-line-algorithm
+
+https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+
 # Project guides
 
 https://medium.com/@youbihi129/42-the-network-fdf-fil-de-fer-project-roadmap-464be06d6f15

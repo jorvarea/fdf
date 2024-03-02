@@ -37,7 +37,7 @@ submodules:
 	@git submodule init
 	@git submodule update
 
-$(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
+$(NAME): $(LIBRARIES) $(OBJECT_FILES)
 	@echo "${YELLOW}Linking $(NAME)...${NO_COLOR}"
 	@mkdir -p bin
 	@$(CC) $(CFLAGS) $(MLX42_FLAGS) -o $(NAME) $(OBJECT_FILES) $(LIBRARIES)
@@ -59,7 +59,7 @@ $(MLX42):
 	@cmake -S $(MLX42_DIR) -B $(MLX42_DIR)/build
 	@$(MAKE) -C $(MLX42_DIR)/build -j4
 
-obj/%.o: src/%.c
+obj/%.o: src/%.c includes/fdf.h
 	@echo "${YELLOW}Compiling $<...${NO_COLOR}"
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) -c $< -o $@

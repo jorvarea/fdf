@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/27 14:55:13 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/02 01:15:31 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 # define INITIAL_MAP_DIMENSION 10
 # define INITIAL_COLORS_DIMENSION 20
+# define WINDOW_WIDTH 700
+# define WINDOW_HEIGHT 700
 
 typedef struct s_map
 {

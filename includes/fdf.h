@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/02 01:15:31 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:32:00 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				check_argument_count_error(int argc);
 void				check_extension_error(char *filename);
 void				check_open_error(int fd);
 void				check_memory_allocation_error(void *ptr);
+void 				check_mlx_error(mlx_t *mlx);
 
 // manage_map_memory.c
 void				allocate_initial_map_memory(t_map *map);

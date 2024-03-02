@@ -18,6 +18,10 @@ https://www.youtube.com/watch?v=4J5snV2wjtw
 
 https://github.com/codam-coding-college/MLX42
 
+# How Do Computers Display 3D on a 2D Screen? (Perspective Projection)
+
+https://www.youtube.com/watch?v=eoXn6nwV694
+
 # Project guides
 
 https://medium.com/@youbihi129/42-the-network-fdf-fil-de-fer-project-roadmap-464be06d6f15

@@ -22,6 +22,10 @@ https://github.com/codam-coding-college/MLX42
 
 https://www.youtube.com/watch?v=eoXn6nwV694
 
+# Understanding perspective projection in OpenGL
+
+https://blogs.oregonstate.edu/learnfromscratch/2021/10/05/understanding-various-coordinate-systems-in-opengl/
+
 # Algorithms for drawing lines on pixel map
 
 https://www.javatpoint.com/computer-graphics-bresenhams-line-algorithm

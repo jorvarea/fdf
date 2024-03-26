@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 22:35:30 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:10:56 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 	int				y;
 	unsigned int	color;
 
+	x = a.x;
 	y = a.y;
 	while (y <= b.y)
 	{

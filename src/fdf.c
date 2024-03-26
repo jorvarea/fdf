@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 21:09:42 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:12:42 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	top_view(mlx_t *mlx, t_map *map)
 	int	spacing;
 	mlx_image_t	*img;
 
-	img = mlx_new_image(mlx, 0.9 * mlx->width, 0.9 * mlx->height);
+	img = mlx_new_image(mlx, IMG_TO_WINDOW_RATIO * mlx->width, IMG_TO_WINDOW_RATIO * mlx->height);
 	check_mlx_image_error(img);
 	spacing = ft_min_float(img->width / map->ncols, img->height / map->nrows);
 	i = 0;

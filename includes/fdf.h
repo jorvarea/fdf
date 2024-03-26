@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 22:19:41 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:22:36 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ void				print_colors(t_map *map);
 // connect_neighbours.c
 void				connect_neighbours(mlx_image_t *img, t_map *map,
 						t_coordinates *coord, int spacing);
+
+// background_image.c
+void				background_image(mlx_t *mlx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 22:19:00 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:35:57 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	top_view(mlx_t *mlx, t_map *map)
 	mlx_image_t		*img;
 
 	img = mlx_new_image(mlx, IMG_TO_WINDOW_RATIO * mlx->width,
-		IMG_TO_WINDOW_RATIO * mlx->height);
+			IMG_TO_WINDOW_RATIO * mlx->height);
 	check_mlx_image_error(img);
 	spacing = ft_min_float(img->width / map->ncols, img->height / map->nrows);
 	i = 0;
@@ -39,28 +39,6 @@ void	top_view(mlx_t *mlx, t_map *map)
 	}
 	mlx_image_to_window(mlx, img, (mlx->width / 2) - (img->width / 2),
 		(mlx->height / 2) - (img->height / 2));
-}
-
-void	background_image(mlx_t *mlx)
-{
-	unsigned int	x;
-	unsigned int	y;
-	mlx_image_t		*img;
-
-	img = mlx_new_image(mlx, mlx->width, mlx->height);
-	check_mlx_image_error(img);
-	y = 0;
-	while (y < img->height)
-	{
-		x = 0;
-		while (x < img->width)
-		{
-			mlx_put_pixel(img, x, y, 0x000000FF);
-			x++;
-		}
-		y++;
-	}
-	mlx_image_to_window(mlx, img, 0, 0);
 }
 
 void	manage_key_pressed(void *mlx)

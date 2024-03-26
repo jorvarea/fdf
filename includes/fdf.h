@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 23:45:43 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 00:36:46 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define INITIAL_COLORS_DIMENSION 20
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 700
-# define IMG_TO_WINDOW_RATIO 0.8
 # define ZOOM_UNIT 0.01
 
 typedef struct s_map
@@ -93,7 +92,7 @@ void				print_colors(t_map *map);
 
 // connect_neighbours.c
 void				connect_neighbours(mlx_image_t *img, t_map *map,
-						t_coordinates *coord, int spacing);
+						t_coordinates *coord, float spacing);
 
 // background_image.c
 void				background_image(mlx_t *mlx);

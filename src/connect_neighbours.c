@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 23:45:10 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 00:30:04 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 
 static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 {
-	int				slope;
+	float			slope;
 	unsigned int	x;
 	unsigned int	y;
 	unsigned int	color;
@@ -40,7 +40,7 @@ static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 	x = a.x;
 	if (b.x != a.x)
 	{
-		slope = (b.y - a.y) / (b.x - a.x);
+		slope = 1.0 * (b.y - a.y) / (b.x - a.x);
 		while (x <= b.x)
 		{
 			y = a.y + slope * (x - a.x);
@@ -67,7 +67,7 @@ static unsigned int	assign_color(t_map *map, int row, int col)
 }
 
 void	connect_neighbours(mlx_image_t *img, t_map *map, t_coordinates *coord,
-		int spacing)
+		float spacing)
 {
 	t_point	current_point;
 	t_point	neighbour;

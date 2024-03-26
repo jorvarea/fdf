@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 00:36:46 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 00:49:09 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ typedef struct s_coordinates
 
 typedef struct s_manage_key_param
 {
-	mlx_t *mlx;
-	t_map *map;
-	mlx_image_t *current_img;
-	float zoom;
+	mlx_t			*mlx;
+	t_map			*map;
+	mlx_image_t		*current_img;
+	float			zoom;
 }					t_manage_key_param;
 
 // check_errors.c
@@ -96,5 +96,15 @@ void				connect_neighbours(mlx_image_t *img, t_map *map,
 
 // background_image.c
 void				background_image(mlx_t *mlx);
+
+// manage_key_pressed.c
+void				manage_key_pressed(void *ptr);
+
+// initialization_and_termination.c
+void				initialization(int argc, char **argv, mlx_t **mlx,
+						t_map *map);
+void				initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
+						t_manage_key_param *param);
+void				termination(mlx_t *mlx, t_map *map);
 
 #endif

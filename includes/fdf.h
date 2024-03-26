@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 22:22:36 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:45:43 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 700
 # define IMG_TO_WINDOW_RATIO 0.8
+# define ZOOM_UNIT 0.01
 
 typedef struct s_map
 {
@@ -40,8 +41,8 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	int				x;
-	int				y;
+	unsigned int	x;
+	unsigned int	y;
 	unsigned int	color;
 }					t_point;
 
@@ -50,6 +51,14 @@ typedef struct s_coordinates
 	int				row;
 	int				col;
 }					t_coordinates;
+
+typedef struct s_manage_key_param
+{
+	mlx_t *mlx;
+	t_map *map;
+	mlx_image_t *current_img;
+	float zoom;
+}					t_manage_key_param;
 
 // check_errors.c
 void				check_argument_count_error(int argc);

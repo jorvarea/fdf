@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 23:10:56 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:45:10 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 {
-	int				x;
-	int				y;
+	unsigned int	x;
+	unsigned int	y;
 	unsigned int	color;
 
 	x = a.x;
@@ -23,7 +23,8 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 	while (y <= b.y)
 	{
 		color = a.color + 1.0 * (y - a.y) / (b.y - a.y) * (b.color - a.color);
-		mlx_put_pixel(img, x, y, color);
+		if (x < img->width && y < img->height)
+			mlx_put_pixel(img, x, y, color);
 		y++;
 	}
 }
@@ -31,8 +32,8 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 {
 	int				slope;
-	int				x;
-	int				y;
+	unsigned int	x;
+	unsigned int	y;
 	unsigned int	color;
 	int				coefficient;
 
@@ -45,7 +46,8 @@ static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 			y = a.y + slope * (x - a.x);
 			coefficient = 1.0 * (x - a.x) / (b.x - a.x);
 			color = a.color + coefficient * (b.color - a.color);
-			mlx_put_pixel(img, x, y, color);
+			if (x < img->width && y < img->height)
+				mlx_put_pixel(img, x, y, color);
 			x++;
 		}
 	}

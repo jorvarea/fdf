@@ -6,13 +6,13 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:38:30 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 14:42:37 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:43:55 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	check_valid_map(t_map *map)
+void	check_valid_map_dimensions(t_map *map)
 {
 	if (map->nrows == 0 || map->ncols == 0)
 	{

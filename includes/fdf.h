@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 21:12:34 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:16:10 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_point
 {
 	int				x;
 	int				y;
+	unsigned int	color;
 }					t_point;
 
 // check_errors.c

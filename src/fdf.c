@@ -6,81 +6,22 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 22:10:01 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:19:00 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
-{
-	int slope;
-	int x;
-	int y;
-	unsigned int color;
-	
-	x = a.x;
-	if (b.x != a.x)
-	{
-		slope = (b.y - a.y) / (b.x - a.x);
-		while (x <= b.x)
-		{
-			y = a.y + slope * (x - a.x);
-			color = a.color + 1.0 * (x - a.x) / (b.x - a.x) * (b.color - a.color);
-			mlx_put_pixel(img, x, y, color);
-			x++;
-		}
-	}
-	else
-	{
-		y = a.y;
-		while (y <= b.y)
-		{
-			color = a.color + 1.0 * (y - a.y) / (b.y - a.y) * (b.color - a.color);
-			mlx_put_pixel(img, x, y, color);
-			y++;
-		}
-	}
-}
-
-void connect_neighbours(mlx_image_t *img, t_map *map, int fil, int col, int spacing)
-{
-	t_point current_point;
-	t_point neighbour;
-	
-	current_point.x = col * spacing;
-	current_point.y = fil * spacing;
-	current_point.color = map->color[map->data[fil][col]];
-	if (fil != 0)
-	{
-		neighbour.x = current_point.x;
-		neighbour.y = current_point.y - spacing;
-		if (map->color[map->data[fil - 1][col]])
-			neighbour.color = (map->color[map->data[fil - 1][col]] << 8) + 0xFF;
-		else
-			neighbour.color = 0xFFFFFFFF;
-		draw_line_between_points(img, neighbour, current_point);
-	}
-	if (col != 0)
-	{
-		neighbour.x = current_point.x - spacing;
-		neighbour.y = current_point.y;
-		if (map->color[map->data[fil][col - 1]])
-			neighbour.color = (map->color[map->data[fil][col - 1]] << 8) + 0xFF;
-		else
-			neighbour.color = 0xFFFFFFFF;
-		draw_line_between_points(img, neighbour, current_point);
-	}
-}
-
 void	top_view(mlx_t *mlx, t_map *map)
 {
-	int	i;
-	int j;
-	int	spacing;
-	mlx_image_t	*img;
+	int				i;
+	int				j;
+	int				spacing;
+	t_coordinates	coord;
+	mlx_image_t		*img;
 
-	img = mlx_new_image(mlx, IMG_TO_WINDOW_RATIO * mlx->width, IMG_TO_WINDOW_RATIO * mlx->height);
+	img = mlx_new_image(mlx, IMG_TO_WINDOW_RATIO * mlx->width,
+		IMG_TO_WINDOW_RATIO * mlx->height);
 	check_mlx_image_error(img);
 	spacing = ft_min_float(img->width / map->ncols, img->height / map->nrows);
 	i = 0;
@@ -89,20 +30,23 @@ void	top_view(mlx_t *mlx, t_map *map)
 		j = 0;
 		while (j < map->ncols)
 		{
-			connect_neighbours(img, map, i, j, spacing);
+			coord.row = i;
+			coord.col = j;
+			connect_neighbours(img, map, &coord, spacing);
 			j++;
 		}
 		i++;
 	}
-	mlx_image_to_window(mlx, img, (mlx->width / 2) - (img->width / 2), (mlx->height / 2) - (img->height / 2));
+	mlx_image_to_window(mlx, img, (mlx->width / 2) - (img->width / 2),
+		(mlx->height / 2) - (img->height / 2));
 }
 
-void background_image(mlx_t *mlx)
+void	background_image(mlx_t *mlx)
 {
-	unsigned int x;
-	unsigned int y;
-	mlx_image_t *img;
-	
+	unsigned int	x;
+	unsigned int	y;
+	mlx_image_t		*img;
+
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	check_mlx_image_error(img);
 	y = 0;

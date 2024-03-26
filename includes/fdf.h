@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 21:16:10 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:19:41 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct s_point
 	unsigned int	color;
 }					t_point;
 
+typedef struct s_coordinates
+{
+	int				row;
+	int				col;
+}					t_coordinates;
+
 // check_errors.c
 void				check_argument_count_error(int argc);
 void				check_extension_error(char *filename);
@@ -75,5 +81,9 @@ void				parse_map(char *filename, t_map *map);
 // helper_functions.c
 void				print_map_array(t_map *map);
 void				print_colors(t_map *map);
+
+// connect_neighbours.c
+void				connect_neighbours(mlx_image_t *img, t_map *map,
+						t_coordinates *coord, int spacing);
 
 #endif

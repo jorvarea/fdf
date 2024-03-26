@@ -6,17 +6,17 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/02 18:37:09 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:42:46 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# include "MLX42.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "libft.h"
-# include "MLX42.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
@@ -25,7 +25,6 @@
 # define INITIAL_COLORS_DIMENSION 20
 # define WINDOW_WIDTH 700
 # define WINDOW_HEIGHT 700
-# define WINDOW_MARGIN 0.1
 
 typedef struct s_map
 {
@@ -38,12 +37,21 @@ typedef struct s_map
 	int				allocated_colors;
 }					t_map;
 
+typedef struct s_point
+{
+	int				x;
+	int				y;
+}					t_point;
+
 // check_errors.c
 void				check_argument_count_error(int argc);
 void				check_extension_error(char *filename);
 void				check_open_error(int fd);
 void				check_memory_allocation_error(void *ptr);
-void 				check_mlx_error(mlx_t *mlx);
+void				check_mlx_error(mlx_t *mlx);
+
+// check_errors2.c
+void				check_valid_map(t_map *map);
 
 // manage_map_memory.c
 void				allocate_initial_map_memory(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 00:49:09 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 00:51:43 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,8 @@ void				initialization(int argc, char **argv, mlx_t **mlx,
 void				initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
 						t_manage_key_param *param);
 void				termination(mlx_t *mlx, t_map *map);
+
+// main.c
+mlx_image_t			*top_view(mlx_t *mlx, t_map *map, float zoom);
 
 #endif

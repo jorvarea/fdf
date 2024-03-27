@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 01:05:16 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 01:59:03 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 700
 # define ZOOM_UNIT 0.01
+# define ZOOM_LIMIT 3
 
 typedef struct s_map
 {

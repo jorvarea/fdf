@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 12:44:40 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:11:05 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ void	connect_neighbours(mlx_image_t *img, t_map *map, t_coordinates *coord,
 	current_point.x = coord->col * spacing;
 	current_point.y = coord->row * spacing;
 	current_point.color = assign_color(map, coord->row, coord->col);
-	if (coord->row != 0)
+	if (coord->row > 0)
 	{
 		neighbour.x = current_point.x;
 		neighbour.y = current_point.y - spacing;
 		neighbour.color = assign_color(map, coord->row - 1, coord->col);
 		draw_line_between_points(img, neighbour, current_point);
 	}
-	if (coord->col != 0)
+	if (coord->col > 0)
 	{
 		neighbour.x = current_point.x - spacing;
 		neighbour.y = current_point.y;

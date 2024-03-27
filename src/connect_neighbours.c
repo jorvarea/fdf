@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 00:30:04 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 12:44:40 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 	y = a.y;
 	while (y <= b.y)
 	{
-		color = a.color + 1.0 * (y - a.y) / (b.y - a.y) * (b.color - a.color);
+		if (a.color != b.color)
+			color = a.color + 1.0 * (y - a.y) / (b.y - a.y) * (b.color - a.color);
+		else
+			color = a.color;
 		if (x < img->width && y < img->height)
 			mlx_put_pixel(img, x, y, color);
 		y++;
@@ -35,7 +38,7 @@ static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 	unsigned int	x;
 	unsigned int	y;
 	unsigned int	color;
-	int				coefficient;
+	float			coefficient;
 
 	x = a.x;
 	if (b.x != a.x)
@@ -44,8 +47,13 @@ static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 		while (x <= b.x)
 		{
 			y = a.y + slope * (x - a.x);
-			coefficient = 1.0 * (x - a.x) / (b.x - a.x);
-			color = a.color + coefficient * (b.color - a.color);
+			if (a.color != b.color)
+			{
+				coefficient = 1.0 * (x - a.x) / (b.x - a.x);
+				color = a.color + coefficient * (b.color - a.color);
+			}
+			else
+				color = a.color;
 			if (x < img->width && y < img->height)
 				mlx_put_pixel(img, x, y, color);
 			x++;
@@ -62,7 +70,7 @@ static unsigned int	assign_color(t_map *map, int row, int col)
 	if (map->color[map->data[row][col]])
 		color = (map->color[map->data[row][col]] << 8) + 0xFF;
 	else
-		color = 0xFFFFFFFF;
+		color = 0x000000FF;
 	return (color);
 }
 
@@ -74,7 +82,7 @@ void	connect_neighbours(mlx_image_t *img, t_map *map, t_coordinates *coord,
 
 	current_point.x = coord->col * spacing;
 	current_point.y = coord->row * spacing;
-	current_point.color = map->color[map->data[coord->row][coord->col]];
+	current_point.color = assign_color(map, coord->row, coord->col);
 	if (coord->row != 0)
 	{
 		neighbour.x = current_point.x;

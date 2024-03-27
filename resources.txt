@@ -28,9 +28,11 @@ https://blogs.oregonstate.edu/learnfromscratch/2021/10/05/understanding-various-
 
 # Algorithms for drawing lines on pixel map
 
-https://www.javatpoint.com/computer-graphics-bresenhams-line-algorithm
+https://www.geeksforgeeks.org/bresenhams-line-generation-algorithm/
 
-https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+https://www.geeksforgeeks.org/dda-line-generation-algorithm-computer-graphics/
+
+https://www.geeksforgeeks.org/anti-aliased-line-xiaolin-wus-algorithm/
 
 # Project guides
 

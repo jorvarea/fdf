@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 00:51:32 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 01:33:17 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 	t_coordinates	coord;
 	mlx_image_t		*img;
 
-	img = mlx_new_image(mlx, mlx->width, mlx->height);
+	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height / map->nrows);
+	img = mlx_new_image(mlx, spacing * map->ncols, spacing * map->nrows);
+	draw_image_border(img);
 	check_mlx_image_error(img);
-	spacing = zoom * ft_min_float(img->width / map->ncols, img->height / map->nrows);
 	i = 0;
 	while (i < map->nrows)
 	{

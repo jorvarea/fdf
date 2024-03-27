@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 15:56:37 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:43:38 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define INITIAL_COLORS_DIMENSION 20
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
+# define INITIAL_ZOOM 0.5
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
 

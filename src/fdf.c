@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 14:07:03 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:43:07 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 
 	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height / map->nrows);
 	img = mlx_new_image(mlx, spacing * map->ncols, spacing * map->nrows);
-	draw_image_border(img);
 	check_mlx_image_error(img);
+	draw_image_border(img);
 	i = 0;
 	while (i < map->nrows)
 	{
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	t_manage_key_param param;
 
 	initialization(argc, argv, &mlx, &map);
-	img = top_view(mlx, &map, 1.0);
+	img = top_view(mlx, &map, INITIAL_ZOOM);
 	initialize_param(mlx, &map, img, &param);
 	mlx_loop_hook(mlx, manage_key_pressed, &param);
 	mlx_loop(mlx);

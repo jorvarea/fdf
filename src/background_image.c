@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:21:56 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 22:22:03 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:12:15 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	background_image(mlx_t *mlx)
 		}
 		y++;
 	}
-	mlx_image_to_window(mlx, img, 0, 0);
+	check_mlx_image_to_window_error(mlx, img, 0, 0);
 }

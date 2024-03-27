@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 17:50:25 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:15:18 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void				check_mlx_error(mlx_t *mlx);
 // check_errors2.c
 void				check_valid_map_dimensions(t_map *map);
 void				check_mlx_image_error(mlx_image_t *img);
+void 				check_mlx_image_to_window_error(mlx_t *mlx, mlx_image_t *img, int32_t x, int32_t y);
 
 // manage_map_memory.c
 void				allocate_initial_map_memory(t_map *map);

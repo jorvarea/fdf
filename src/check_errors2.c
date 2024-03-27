@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:38:30 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/26 15:38:04 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:15:08 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ void	check_mlx_image_error(mlx_image_t *img)
 	if (img == NULL)
 	{
 		ft_printf("Error: Image buffer allocation failed\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+void check_mlx_image_to_window_error(mlx_t *mlx, mlx_image_t *img, int32_t x, int32_t y)
+{
+	bool ok;
+	ok = mlx_image_to_window(mlx, img, x, y) != -1;
+	if (!ok)
+	{
+		ft_printf("Error: Image to window operation failed\n");
 		exit(EXIT_FAILURE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 16:43:07 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:12:02 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 		}
 		i++;
 	}
-	mlx_image_to_window(mlx, img, (mlx->width / 2) - (spacing * map->ncols / 2),
+	check_mlx_image_to_window_error(mlx, img, (mlx->width / 2) - (spacing * map->ncols / 2),
 		(mlx->height / 2) - (spacing * map->nrows / 2));
 	return (img);
 }

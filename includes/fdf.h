@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 16:43:38 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:50:25 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ typedef struct s_map
 	int				allocated_cols;
 	int				allocated_colors;
 }					t_map;
+
+typedef struct s_color
+{
+	unsigned int red;
+	unsigned int green;
+	unsigned int blue;
+	unsigned int alpha;
+}				t_color;
 
 typedef struct s_point
 {
@@ -109,6 +117,9 @@ void				initialization(int argc, char **argv, mlx_t **mlx,
 void				initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
 						t_manage_key_param *param);
 void				termination(mlx_t *mlx, t_map *map);
+
+// color_utils.c
+unsigned int 		color_gradient(unsigned int color_a, unsigned int color_b, float coefficient);
 
 // main.c
 mlx_image_t			*top_view(mlx_t *mlx, t_map *map, float zoom);

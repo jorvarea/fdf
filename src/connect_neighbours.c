@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 15:49:57 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:03:00 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 	float			x;
 	float			y;
 	unsigned int	color;
+	float 			coefficient;
 
 	x = a.x;
 	y = a.y;
 	while (y <= (float)b.y)
 	{
 		if (a.color != b.color)
-			color = a.color + (y - a.y) / (b.y - a.y) * (b.color - a.color);
+		{
+			coefficient = (y - a.y) / (b.y - a.y);
+			color = color_gradient(a.color, b.color, coefficient);
+		}
 		else
 			color = a.color;
 		if (x < (float)img->width && y < (float)img->height)
@@ -50,7 +54,7 @@ static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 			if (a.color != b.color)
 			{
 				coefficient = (x - a.x) / (b.x - a.x);
-				color = a.color + coefficient * (b.color - a.color);
+				color = color_gradient(a.color, b.color, coefficient);
 			}
 			else
 				color = a.color;

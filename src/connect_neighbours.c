@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 14:11:05 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:49:57 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 {
-	unsigned int	x;
-	unsigned int	y;
+	float			x;
+	float			y;
 	unsigned int	color;
 
 	x = a.x;
 	y = a.y;
-	while (y <= b.y)
+	while (y <= (float)b.y)
 	{
 		if (a.color != b.color)
-			color = a.color + 1.0 * (y - a.y) / (b.y - a.y) * (b.color - a.color);
+			color = a.color + (y - a.y) / (b.y - a.y) * (b.color - a.color);
 		else
 			color = a.color;
-		if (x < img->width && y < img->height)
-			mlx_put_pixel(img, x, y, color);
+		if (x < (float)img->width && y < (float)img->height)
+			mlx_put_pixel(img, ft_round(x), ft_round(y), color);
 		y++;
 	}
 }
@@ -35,27 +35,27 @@ static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
 static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 {
 	float			slope;
-	unsigned int	x;
-	unsigned int	y;
+	float			x;
+	float			y;
 	unsigned int	color;
 	float			coefficient;
 
 	x = a.x;
 	if (b.x != a.x)
 	{
-		slope = 1.0 * (b.y - a.y) / (b.x - a.x);
-		while (x <= b.x)
+		slope = (b.y - a.y) / (b.x - a.x);
+		while (x <= (float)b.x)
 		{
 			y = a.y + slope * (x - a.x);
 			if (a.color != b.color)
 			{
-				coefficient = 1.0 * (x - a.x) / (b.x - a.x);
+				coefficient = (x - a.x) / (b.x - a.x);
 				color = a.color + coefficient * (b.color - a.color);
 			}
 			else
 				color = a.color;
-			if (x < img->width && y < img->height)
-				mlx_put_pixel(img, x, y, color);
+			if (x < (float)img->width && y < (float)img->height)
+				mlx_put_pixel(img, ft_round(x), ft_round(y), color);
 			x++;
 		}
 	}
@@ -70,7 +70,7 @@ static unsigned int	assign_color(t_map *map, int row, int col)
 	if (map->color[map->data[row][col]])
 		color = (map->color[map->data[row][col]] << 8) + 0xFF;
 	else
-		color = 0x000000FF;
+		color = 0x0000FFFF;
 	return (color);
 }
 

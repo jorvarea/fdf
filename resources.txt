@@ -34,6 +34,10 @@ https://www.geeksforgeeks.org/dda-line-generation-algorithm-computer-graphics/
 
 https://www.geeksforgeeks.org/anti-aliased-line-xiaolin-wus-algorithm/
 
+# Isometric projection
+
+https://es.wikipedia.org/wiki/Proyecci%C3%B3n_isom%C3%A9trica
+
 # Project guides
 
 https://medium.com/@youbihi129/42-the-network-fdf-fil-de-fer-project-roadmap-464be06d6f15

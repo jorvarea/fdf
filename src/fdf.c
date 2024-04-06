@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 18:12:02 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 03:39:23 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 	t_coordinates	coord;
 	mlx_image_t		*img;
 
-	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height / map->nrows);
+	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height
+		/ map->nrows);
 	img = mlx_new_image(mlx, spacing * map->ncols, spacing * map->nrows);
 	check_mlx_image_error(img);
 	draw_image_border(img);
@@ -37,23 +38,57 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 		}
 		i++;
 	}
-	check_mlx_image_to_window_error(mlx, img, (mlx->width / 2) - (spacing * map->ncols / 2),
-		(mlx->height / 2) - (spacing * map->nrows / 2));
+	check_mlx_image_to_window_error(mlx, img, (mlx->width / 2) - (spacing
+			* map->ncols / 2), (mlx->height / 2) - (spacing * map->nrows / 2));
 	return (img);
+}
+
+void	calculate_coord_matrix(mlx_t *mlx, t_map *map,
+		t_coord_matrix *coord_matrix)
+{
+	int				row;
+	int				col;
+	unsigned int	x;
+	unsigned int	y;
+	float			spacing;
+
+	initialize_coord_matrix(coord_matrix, map->nrows, map->nrows);
+	spacing = INITIAL_ZOOM * ft_min_float(mlx->width / map->ncols, mlx->height
+		/ map->nrows);
+	row = 0;
+	y = 0;
+	while (row < map->nrows)
+	{
+		col = 0;
+		x = 0;
+		while (col < map->ncols)
+		{
+			coord_matrix->coord[row][col].x = x;
+			coord_matrix->coord[row][col].y = y;
+			coord_matrix->coord[row][col].z = map->data[row][col];
+			coord_matrix->coord[row][col].color = map->color[map->data[row][col]];
+			col++;
+			x += spacing;
+		}
+		row++;
+		y += spacing;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	mlx_t	*mlx;
-	t_map	map;
-	mlx_image_t *img;
-	t_manage_key_param param;
+	mlx_t				*mlx;
+	t_map				map;
+	mlx_image_t			*img;
+	t_manage_key_param	param;
+	t_coord_matrix		coord_matrix;
 
 	initialization(argc, argv, &mlx, &map);
+	calculate_coord_matrix(mlx, &map, &coord_matrix);
 	img = top_view(mlx, &map, INITIAL_ZOOM);
 	initialize_param(mlx, &map, img, &param);
 	mlx_loop_hook(mlx, manage_key_pressed, &param);
 	mlx_loop(mlx);
-	termination(mlx, &map);
+	termination(mlx, &map, &coord_matrix);
 	return (0);
 }

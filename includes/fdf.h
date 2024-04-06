@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 18:15:18 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 03:35:03 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,26 @@ typedef struct s_map
 
 typedef struct s_color
 {
-	unsigned int red;
-	unsigned int green;
-	unsigned int blue;
-	unsigned int alpha;
-}				t_color;
+	unsigned int	red;
+	unsigned int	green;
+	unsigned int	blue;
+	unsigned int	alpha;
+}					t_color;
 
 typedef struct s_point
 {
 	unsigned int	x;
 	unsigned int	y;
+	unsigned int	z;
 	unsigned int	color;
 }					t_point;
+
+typedef struct s_coord_matrix
+{
+	int				nrows;
+	int				ncols;
+	t_point			**coord;
+}					t_coord_matrix;
 
 typedef struct s_coordinates
 {
@@ -79,13 +87,19 @@ void				check_mlx_error(mlx_t *mlx);
 // check_errors2.c
 void				check_valid_map_dimensions(t_map *map);
 void				check_mlx_image_error(mlx_image_t *img);
-void 				check_mlx_image_to_window_error(mlx_t *mlx, mlx_image_t *img, int32_t x, int32_t y);
+void				check_mlx_image_to_window_error(mlx_t *mlx,
+						mlx_image_t *img, int32_t x, int32_t y);
 
 // manage_map_memory.c
 void				allocate_initial_map_memory(t_map *map);
 void				free_data_memory(t_map *map);
 void				free_color_memory(t_map *map);
 void				free_map_memory(t_map *map);
+
+// manage_coord_matrix_memory.c
+void				initialize_coord_matrix(t_coord_matrix *coord_matrix,
+						int nrows, int ncols);
+void				free_coord_matrix_memory(t_coord_matrix *coord_matrix);
 
 // realloc_memory.c
 void				copy_data(t_map *map, int **new_data);
@@ -117,10 +131,12 @@ void				initialization(int argc, char **argv, mlx_t **mlx,
 						t_map *map);
 void				initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
 						t_manage_key_param *param);
-void				termination(mlx_t *mlx, t_map *map);
+void				termination(mlx_t *mlx, t_map *map,
+						t_coord_matrix *coord_matrix);
 
 // color_utils.c
-unsigned int 		color_gradient(unsigned int color_a, unsigned int color_b, float coefficient);
+unsigned int		color_gradient(unsigned int color_a, unsigned int color_b,
+						float coefficient);
 
 // main.c
 mlx_image_t			*top_view(mlx_t *mlx, t_map *map, float zoom);

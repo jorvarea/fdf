@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:10:52 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 14:29:21 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:10:43 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	calculate_coord_matrix(mlx_t *mlx, t_map *map,
 		{
 			coord_matrix->m[row][col].xyz[0] = spacing * col;
 			coord_matrix->m[row][col].xyz[1] = spacing * row;
-			coord_matrix->m[row][col].xyz[2] = map->data[row][col];
+			coord_matrix->m[row][col].xyz[2] = Z_SPACING_RATIO * spacing * map->data[row][col];
 			coord_matrix->m[row][col].color = map->color[map->data[row][col]];
 			col++;
 		}

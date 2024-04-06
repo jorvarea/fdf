@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:59:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 13:36:15 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:41:23 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	perform_point_rot(t_coord_matrix *coord_matrix,
 		j = 0;
 		while (j < rot_matrix->ncols)
 		{
-			suma += rot_matrix->m[i][j] * coord_matrix->coord[row][col].xyz[j];
+			suma += rot_matrix->m[i][j] * coord_matrix->m[row][col].xyz[j];
 			j++;
 		}
 		temp.xyz[i] = suma;
@@ -36,7 +36,7 @@ static void	perform_point_rot(t_coord_matrix *coord_matrix,
 	i = 0;
 	while (i < 3)
 	{
-		coord_matrix->coord[row][col].xyz[i] = temp.xyz[i];
+		coord_matrix->m[row][col].xyz[i] = temp.xyz[i];
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 14:28:03 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:40:12 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ void				print_colors(t_map *map);
 void				draw_image_border(mlx_image_t *img);
 
 // connect_neighbours.c
-void				connect_neighbours(mlx_image_t *img, t_map *map,
-						t_coordinates *coord, float spacing);
+void				connect_neighbours(mlx_image_t *img,
+						t_coord_matrix *coord_matrix, int row, int col);
 
 // background_image.c
 void				background_image(mlx_t *mlx);
@@ -149,16 +149,13 @@ void				calculate_coord_matrix(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
 
 // manage_rotation_matrix_memory.c
-void				allocate_rot_matrix_memory(
-						t_rot_matrix *rot_matrix,
+void				allocate_rot_matrix_memory(t_rot_matrix *rot_matrix,
 						int nrows, int ncols);
 void				allocate_all_rot_matrix_memory(t_rot_matrix *rot_matrix_x,
-						t_rot_matrix *rot_matrix_y,
-						t_rot_matrix *rot_matrix_z);
+						t_rot_matrix *rot_matrix_y, t_rot_matrix *rot_matrix_z);
 void				free_rot_matrix_memory(t_rot_matrix *rot_matrix);
 void				free_all_rot_matrix_memory(t_rot_matrix *rot_matrix_x,
-						t_rot_matrix *rot_matrix_y,
-						t_rot_matrix *rot_matrix_z);
+						t_rot_matrix *rot_matrix_y, t_rot_matrix *rot_matrix_z);
 
 // calculate_rotation_matrix.c
 void				calculate_x_rot_matrix(t_rot_matrix *rot_matrix,
@@ -171,8 +168,5 @@ void				calculate_z_rot_matrix(t_rot_matrix *rot_matrix,
 // perform_rotation.c
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
-
-// main.c
-mlx_image_t			*top_view(mlx_t *mlx, t_map *map, float zoom);
 
 #endif

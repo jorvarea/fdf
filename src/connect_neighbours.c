@@ -6,37 +6,18 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 18:03:00 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:52:43 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	draw_vertical_line(mlx_image_t *img, t_point a, t_point b)
+static bool	point_inside_img(mlx_image_t *img, float x, float y)
 {
-	float			x;
-	float			y;
-	unsigned int	color;
-	float 			coefficient;
-
-	x = a.x;
-	y = a.y;
-	while (y <= (float)b.y)
-	{
-		if (a.color != b.color)
-		{
-			coefficient = (y - a.y) / (b.y - a.y);
-			color = color_gradient(a.color, b.color, coefficient);
-		}
-		else
-			color = a.color;
-		if (x < (float)img->width && y < (float)img->height)
-			mlx_put_pixel(img, ft_round(x), ft_round(y), color);
-		y++;
-	}
+	return (ft_round(x) < (int)img->width && ft_round(y) < (int)img->height);
 }
 
-static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
+static void	draw_inverse_slope_line(mlx_image_t *img, t_point *a, t_point *b)
 {
 	float			slope;
 	float			x;
@@ -44,61 +25,60 @@ static void	draw_line_between_points(mlx_image_t *img, t_point a, t_point b)
 	unsigned int	color;
 	float			coefficient;
 
-	x = a.x;
-	if (b.x != a.x)
+	slope = (b->xyz[0] - a->xyz[0]) / (b->xyz[1] - a->xyz[1]);
+	y = a->xyz[1];
+	while (y <= b->xyz[1])
 	{
-		slope = (b.y - a.y) / (b.x - a.x);
-		while (x <= (float)b.x)
+		x = a->xyz[0] + slope * (y - a->xyz[1]);
+		if (a->color != b->color)
 		{
-			y = a.y + slope * (x - a.x);
-			if (a.color != b.color)
-			{
-				coefficient = (x - a.x) / (b.x - a.x);
-				color = color_gradient(a.color, b.color, coefficient);
-			}
+			coefficient = (y - a->xyz[1]) / (b->xyz[1] - a->xyz[1]);
+			color = color_gradient(a->color, b->color, coefficient);
+		}
+		else
+			color = a->color;
+		if (point_inside_img(img, x, y))
+			mlx_put_pixel(img, ft_round(x), ft_round(y), color);
+		y++;
+	}
+}
+
+static void	draw_line_between_points(mlx_image_t *img, t_point *a, t_point *b)
+{
+	float			slope;
+	float			x;
+	float			y;
+	unsigned int	color;
+	float			coefficient;
+
+	slope = (b->xyz[1] - a->xyz[1]) / (b->xyz[0] - a->xyz[0]);
+	if (ft_abs_float(slope) <= 1)
+	{
+		x = a->xyz[0];
+		while (x <= b->xyz[0])
+		{
+			y = a->xyz[1] + slope * (x - a->xyz[0]);
+			coefficient = (x - a->xyz[0]) / (b->xyz[0] - a->xyz[0]);
+			if (a->color != b->color)
+				color = color_gradient(a->color, b->color, coefficient);
 			else
-				color = a.color;
-			if (x < (float)img->width && y < (float)img->height)
+				color = a->color;
+			if (point_inside_img(img, x, y))
 				mlx_put_pixel(img, ft_round(x), ft_round(y), color);
 			x++;
 		}
 	}
 	else
-		draw_vertical_line(img, a, b);
+		draw_inverse_slope_line(img, a, b);
 }
 
-static unsigned int	assign_color(t_map *map, int row, int col)
+void	connect_neighbours(mlx_image_t *img, t_coord_matrix *coord_matrix,
+		int row, int col)
 {
-	unsigned int	color;
-
-	if (map->color[map->data[row][col]])
-		color = (map->color[map->data[row][col]] << 8) + 0xFF;
-	else
-		color = 0x0000FFFF;
-	return (color);
-}
-
-void	connect_neighbours(mlx_image_t *img, t_map *map, t_coordinates *coord,
-		float spacing)
-{
-	t_point	current_point;
-	t_point	neighbour;
-
-	current_point.x = coord->col * spacing;
-	current_point.y = coord->row * spacing;
-	current_point.color = assign_color(map, coord->row, coord->col);
-	if (coord->row > 0)
-	{
-		neighbour.x = current_point.x;
-		neighbour.y = current_point.y - spacing;
-		neighbour.color = assign_color(map, coord->row - 1, coord->col);
-		draw_line_between_points(img, neighbour, current_point);
-	}
-	if (coord->col > 0)
-	{
-		neighbour.x = current_point.x - spacing;
-		neighbour.y = current_point.y;
-		neighbour.color = assign_color(map, coord->row, coord->col - 1);
-		draw_line_between_points(img, neighbour, current_point);
-	}
+	if (row > 0)
+		draw_line_between_points(img, &coord_matrix->m[row - 1][col],
+			&coord_matrix->m[row][col]);
+	if (col > 0)
+		draw_line_between_points(img, &coord_matrix->m[row][col - 1],
+			&coord_matrix->m[row][col]);
 }

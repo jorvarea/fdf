@@ -6,40 +6,32 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 03:59:14 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:03:53 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
+mlx_image_t	*projection_2d(mlx_t *mlx, t_coord_matrix *coord_matrix)
 {
-	int				i;
-	int				j;
-	float			spacing;
-	t_coordinates	coord;
-	mlx_image_t		*img;
+	int			i;
+	int			j;
+	mlx_image_t	*img;
 
-	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height
-		/ map->nrows);
-	img = mlx_new_image(mlx, spacing * map->ncols, spacing * map->nrows);
+	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	check_mlx_image_error(img);
-	draw_image_border(img);
 	i = 0;
-	while (i < map->nrows)
+	while (i < coord_matrix->nrows)
 	{
 		j = 0;
-		while (j < map->ncols)
+		while (j < coord_matrix->ncols)
 		{
-			coord.row = i;
-			coord.col = j;
-			connect_neighbours(img, map, &coord, spacing);
+			connect_neighbours(img, coord_matrix, i, j);
 			j++;
 		}
 		i++;
 	}
-	check_mlx_image_to_window_error(mlx, img, (mlx->width / 2) - (spacing
-			* map->ncols / 2), (mlx->height / 2) - (spacing * map->nrows / 2));
+	check_mlx_image_to_window_error(mlx, img, 0, 0);
 	return (img);
 }
 
@@ -53,7 +45,9 @@ int	main(int argc, char **argv)
 
 	initialization(argc, argv, &mlx, &map);
 	calculate_coord_matrix(mlx, &map, &coord_matrix);
-	img = top_view(mlx, &map, INITIAL_ZOOM);
+	perform_rotation(&coord_matrix, -atan(1 / sqrt(2)), M_PI / 4, 0);
+	img = projection_2d(mlx, &coord_matrix);
+	// review the param initialization and zoom calculations
 	initialize_param(mlx, &map, img, &param);
 	mlx_loop_hook(mlx, manage_key_pressed, &param);
 	mlx_loop(mlx);

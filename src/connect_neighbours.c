@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 15:52:43 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:20:26 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static bool	point_inside_img(mlx_image_t *img, float x, float y)
 {
-	return (ft_round(x) < (int)img->width && ft_round(y) < (int)img->height);
+	return (ft_round(x) >= 0 && ft_round(y) >= 0 && ft_round(x) < (int)img->width 
+			&& ft_round(y) < (int)img->height);
 }
 
 static void	draw_inverse_slope_line(mlx_image_t *img, t_point *a, t_point *b)
@@ -38,7 +39,7 @@ static void	draw_inverse_slope_line(mlx_image_t *img, t_point *a, t_point *b)
 		else
 			color = a->color;
 		if (point_inside_img(img, x, y))
-			mlx_put_pixel(img, ft_round(x), ft_round(y), color);
+			mlx_put_pixel(img, IMG_OFFSET + ft_round(x), IMG_OFFSET + ft_round(y), color);
 		y++;
 	}
 }
@@ -64,7 +65,7 @@ static void	draw_line_between_points(mlx_image_t *img, t_point *a, t_point *b)
 			else
 				color = a->color;
 			if (point_inside_img(img, x, y))
-				mlx_put_pixel(img, ft_round(x), ft_round(y), color);
+				mlx_put_pixel(img, IMG_OFFSET + ft_round(x), IMG_OFFSET + ft_round(y), color);
 			x++;
 		}
 	}

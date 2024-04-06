@@ -21,7 +21,7 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 	mlx_image_t		*img;
 
 	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height
-			/ map->nrows);
+		/ map->nrows);
 	img = mlx_new_image(mlx, spacing * map->ncols, spacing * map->nrows);
 	check_mlx_image_error(img);
 	draw_image_border(img);

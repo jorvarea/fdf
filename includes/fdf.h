@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 04:00:08 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 13:29:21 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ typedef struct s_color
 
 typedef struct s_point
 {
-	unsigned int	x;
-	unsigned int	y;
-	unsigned int	z;
+	unsigned int	xyz[3];
 	unsigned int	color;
 }					t_point;
 
@@ -62,6 +60,13 @@ typedef struct s_coord_matrix
 	int				ncols;
 	t_point			**coord;
 }					t_coord_matrix;
+
+typedef struct s_rot_matrix
+{
+	int				nrows;
+	int				ncols;
+	float			**m;
+}					t_rot_matrix;
 
 typedef struct s_coordinates
 {
@@ -95,11 +100,6 @@ void				allocate_initial_map_memory(t_map *map);
 void				free_data_memory(t_map *map);
 void				free_color_memory(t_map *map);
 void				free_map_memory(t_map *map);
-
-// manage_coord_matrix_memory.c
-void				initialize_coord_matrix(t_coord_matrix *coord_matrix,
-						int nrows, int ncols);
-void				free_coord_matrix_memory(t_coord_matrix *coord_matrix);
 
 // realloc_memory.c
 void				copy_data(t_map *map, int **new_data);
@@ -139,8 +139,35 @@ unsigned int		color_gradient(unsigned int color_a, unsigned int color_b,
 						float coefficient);
 
 // coord_matrix.c
+void				initialize_coord_matrix(t_coord_matrix *coord_matrix,
+						int nrows, int ncols);
+void				free_coord_matrix_memory(t_coord_matrix *coord_matrix);
 void				calculate_coord_matrix(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
+
+// manage_rotation_matrix_memory.c
+void				allocate_rot_matrix_memory(
+						t_rot_matrix *rot_matrix,
+						int nrows, int ncols);
+void				allocate_all_rot_matrix_memory(t_rot_matrix *rot_matrix_x,
+						t_rot_matrix *rot_matrix_y,
+						t_rot_matrix *rot_matrix_z);
+void				free_rot_matrix_memory(t_rot_matrix *rot_matrix);
+void				free_all_rot_matrix_memory(t_rot_matrix *rot_matrix_x,
+						t_rot_matrix *rot_matrix_y,
+						t_rot_matrix *rot_matrix_z);
+
+// calculate_rotation_matrix.c
+void				calculate_x_rot_matrix(t_rot_matrix *rot_matrix,
+						float theta_x);
+void				calculate_y_rot_matrix(t_rot_matrix *rot_matrix,
+						float theta_y);
+void				calculate_z_rot_matrix(t_rot_matrix *rot_matrix,
+						float theta_z);
+
+// perform_rotation.c
+void				perform_rotation(t_coord_matrix *coord_matrix,
+						float theta_x, float theta_y, float theta_z);
 
 // main.c
 mlx_image_t			*top_view(mlx_t *mlx, t_map *map, float zoom);

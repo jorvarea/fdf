@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 03:35:03 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 04:00:08 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,10 @@ void				termination(mlx_t *mlx, t_map *map,
 // color_utils.c
 unsigned int		color_gradient(unsigned int color_a, unsigned int color_b,
 						float coefficient);
+
+// coord_matrix.c
+void				calculate_coord_matrix(mlx_t *mlx, t_map *map,
+						t_coord_matrix *coord_matrix);
 
 // main.c
 mlx_image_t			*top_view(mlx_t *mlx, t_map *map, float zoom);

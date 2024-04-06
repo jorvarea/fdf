@@ -6,13 +6,13 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:59:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 15:41:23 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:39:20 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	perform_point_rot(t_coord_matrix *coord_matrix,
+void	perform_point_rot(t_coord_matrix *coord_matrix,
 		t_rot_matrix *rot_matrix, int row, int col)
 {
 	t_point	temp;

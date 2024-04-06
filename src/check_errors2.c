@@ -30,9 +30,11 @@ void	check_mlx_image_error(mlx_image_t *img)
 	}
 }
 
-void check_mlx_image_to_window_error(mlx_t *mlx, mlx_image_t *img, int32_t x, int32_t y)
+void	check_mlx_image_to_window_error(mlx_t *mlx, mlx_image_t *img, int32_t x,
+		int32_t y)
 {
-	bool ok;
+	bool	ok;
+
 	ok = mlx_image_to_window(mlx, img, x, y) != -1;
 	if (!ok)
 	{

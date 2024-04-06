@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:01:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 17:58:19 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 03:43:20 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static unsigned int	merge_colors(t_color *colors)
 {
 	unsigned int	color;
 
-	color = (colors->red << 24) | (colors->green << 16) | (colors->blue << 8) | colors->alpha;
+	color = (colors->red << 24) | (colors->green << 16) | (colors->blue << 8) 
+		| colors->alpha;
 	return (color);
 }
 
@@ -37,8 +38,11 @@ unsigned int	color_gradient(unsigned int color_a, unsigned int color_b,
 
 	split_colors(color_a, &colors_a);
 	split_colors(color_b, &colors_b);
-	result.red = (1.0 - coefficient) * colors_a.red + coefficient * colors_b.red;
-	result.green = (1.0 - coefficient) * colors_a.green + coefficient * colors_b.green;
-	result.blue = (1.0 - coefficient) * colors_a.blue + coefficient * colors_b.blue;
+	result.red = (1.0 - coefficient) * colors_a.red + coefficient
+		* colors_b.red;
+	result.green = (1.0 - coefficient) * colors_a.green + coefficient
+		* colors_b.green;
+	result.blue = (1.0 - coefficient) * colors_a.blue + coefficient
+		* colors_b.blue;
 	return (merge_colors(&result));
 }

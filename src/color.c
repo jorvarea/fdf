@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:01:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 14:16:58 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:54:15 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static unsigned int	merge_colors(t_color *colors)
 {
 	unsigned int	color;
 
-	color = (colors->red << 24) | (colors->green << 16) | (colors->blue << 8) | colors->alpha;
+	color = (colors->red << 24) | (colors->green << 16) | (colors->blue << 8) 
+		| colors->alpha;
 	return (color);
 }
 

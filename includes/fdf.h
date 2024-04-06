@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 13:29:21 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:18:15 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 
 # define INITIAL_MAP_DIMENSION 10
 # define INITIAL_COLORS_DIMENSION 20
+# define DEFAULT_COLOR 0x0000FFFF
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
+# define IMG_OFFSET 50
 # define INITIAL_ZOOM 0.5
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
@@ -50,7 +52,7 @@ typedef struct s_color
 
 typedef struct s_point
 {
-	unsigned int	xyz[3];
+	float			xyz[3];
 	unsigned int	color;
 }					t_point;
 
@@ -134,7 +136,8 @@ void				initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
 void				termination(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
 
-// color_utils.c
+// color.c
+void				add_alpha_channel(t_map *map);
 unsigned int		color_gradient(unsigned int color_a, unsigned int color_b,
 						float coefficient);
 

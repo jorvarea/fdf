@@ -1,16 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_gradient.c                                   :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:01:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 03:43:20 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:16:58 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	add_alpha_channel(t_map *map)
+{
+	unsigned int	color;
+    int row;
+    int col;
+    
+    row = 0;
+    while (row < map->nrows)
+    {
+        col = 0;
+        while (col < map->ncols)
+        {
+            if (map->color[map->data[row][col]])
+                color = (map->color[map->data[row][col]] << 8) + 0xFF;
+            else
+                color = DEFAULT_COLOR;
+            map->color[map->data[row][col]] = color;
+            col++;
+        }
+        row++;
+    }
+}
 
 static void	split_colors(unsigned int color, t_color *colors)
 {

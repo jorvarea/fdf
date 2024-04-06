@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:48:24 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 03:34:36 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:18:40 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	initialization(int argc, char **argv, mlx_t **mlx, t_map *map)
 	ft_memset(map, 0, sizeof(t_map));
 	parse_map(argv[1], map);
 	check_valid_map_dimensions(map);
+	add_alpha_channel(map);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	*mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Fil de fer", true);
 	check_mlx_error(*mlx);

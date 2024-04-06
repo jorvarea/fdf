@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:48:24 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/03/27 00:48:31 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 02:37:55 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
 	param->mlx = mlx;
 	param->map = map;
 	param->current_img = img;
-	param->zoom = 1.0;
+	param->zoom = INITIAL_ZOOM;
 }
 
 void	termination(mlx_t *mlx, t_map *map)

@@ -15,24 +15,24 @@
 void	add_alpha_channel(t_map *map)
 {
 	unsigned int	color;
-    int row;
-    int col;
-    
-    row = 0;
-    while (row < map->nrows)
-    {
-        col = 0;
-        while (col < map->ncols)
-        {
-            if (map->color[map->data[row][col]])
-                color = (map->color[map->data[row][col]] << 8) + 0xFF;
-            else
-                color = DEFAULT_COLOR;
-            map->color[map->data[row][col]] = color;
-            col++;
-        }
-        row++;
-    }
+	int				row;
+	int				col;
+
+	row = 0;
+	while (row < map->nrows)
+	{
+		col = 0;
+		while (col < map->ncols)
+		{
+			if (map->color[map->data[row][col]])
+				color = (map->color[map->data[row][col]] << 8) + 0xFF;
+			else
+				color = DEFAULT_COLOR;
+			map->color[map->data[row][col]] = color;
+			col++;
+		}
+		row++;
+	}
 }
 
 static void	split_colors(unsigned int color, t_color *colors)
@@ -47,8 +47,7 @@ static unsigned int	merge_colors(t_color *colors)
 {
 	unsigned int	color;
 
-	color = (colors->red << 24) | (colors->green << 16) | (colors->blue << 8) 
-		| colors->alpha;
+	color = (colors->red << 24) | (colors->green << 16) | (colors->blue << 8) | colors->alpha;
 	return (color);
 }
 

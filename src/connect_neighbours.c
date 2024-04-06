@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 16:20:26 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:26:58 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 static bool	point_inside_img(mlx_image_t *img, float x, float y)
 {
-	return (ft_round(x) >= 0 && ft_round(y) >= 0 && ft_round(x) < (int)img->width 
-			&& ft_round(y) < (int)img->height);
+	unsigned int actual_x;
+	unsigned int actual_y;
+
+	actual_x = ft_round(x) + IMG_OFFSET;
+	actual_y = ft_round(y) + IMG_OFFSET;
+	
+	return (actual_x >= 0 && actual_y >= 0 && actual_x < img->width 
+			&& actual_y < img->height);
 }
 
 static void	draw_inverse_slope_line(mlx_image_t *img, t_point *a, t_point *b)

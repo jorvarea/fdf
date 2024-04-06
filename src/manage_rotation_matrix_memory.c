@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 13:11:39 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 13:30:47 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:29:47 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	allocate_all_rot_matrix_memory(t_rot_matrix *rot_matrix_x,
 	allocate_rot_matrix_memory(rot_matrix_z, 3, 3);
 }
 
-void	free_rotation_matrix_memory(t_rot_matrix *rot_matrix)
+void	free_rot_matrix_memory(t_rot_matrix *rot_matrix)
 {
 	int	i;
 

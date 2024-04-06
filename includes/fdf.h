@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 14:18:15 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:28:03 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_coord_matrix
 {
 	int				nrows;
 	int				ncols;
-	t_point			**coord;
+	t_point			**m;
 }					t_coord_matrix;
 
 typedef struct s_rot_matrix

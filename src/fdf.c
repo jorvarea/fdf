@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 03:39:23 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 03:57:38 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ mlx_image_t	*top_view(mlx_t *mlx, t_map *map, float zoom)
 	mlx_image_t		*img;
 
 	spacing = zoom * ft_min_float(mlx->width / map->ncols, mlx->height
-		/ map->nrows);
+			/ map->nrows);
 	img = mlx_new_image(mlx, spacing * map->ncols, spacing * map->nrows);
 	check_mlx_image_error(img);
 	draw_image_border(img);
@@ -48,30 +48,25 @@ void	calculate_coord_matrix(mlx_t *mlx, t_map *map,
 {
 	int				row;
 	int				col;
-	unsigned int	x;
-	unsigned int	y;
 	float			spacing;
 
 	initialize_coord_matrix(coord_matrix, map->nrows, map->nrows);
-	spacing = INITIAL_ZOOM * ft_min_float(mlx->width / map->ncols, mlx->height
-		/ map->nrows);
+	spacing = INITIAL_ZOOM * ft_min_float(mlx->width / map->ncols, \
+			mlx->height / map->nrows);
 	row = 0;
-	y = 0;
 	while (row < map->nrows)
 	{
 		col = 0;
-		x = 0;
 		while (col < map->ncols)
 		{
-			coord_matrix->coord[row][col].x = x;
-			coord_matrix->coord[row][col].y = y;
+			coord_matrix->coord[row][col].x = spacing * col;
+			coord_matrix->coord[row][col].y = spacing * row;
 			coord_matrix->coord[row][col].z = map->data[row][col];
-			coord_matrix->coord[row][col].color = map->color[map->data[row][col]];
+			coord_matrix->coord[row][col].color = \
+					map->color[map->data[row][col]];
 			col++;
-			x += spacing;
 		}
 		row++;
-		y += spacing;
 	}
 }
 

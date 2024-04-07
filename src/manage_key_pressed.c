@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:47:08 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 15:38:47 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:03:52 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	manage_key_pressed(void *ptr)
 {
-	t_manage_key_param	*param;
+	t_state	*state;
 
-	param = (t_manage_key_param *)ptr;
-	if (mlx_is_key_down(param->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(param->mlx);
+	state = (t_state *)ptr;
+	if (mlx_is_key_down(state->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(state->mlx);
 	// if (mlx_is_key_down(param->mlx, MLX_KEY_P))
 	// {
 	// 	if (param->zoom < ZOOM_LIMIT)

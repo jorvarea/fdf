@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:48:24 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 14:18:40 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:09:02 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ void	initialization(int argc, char **argv, mlx_t **mlx, t_map *map)
 	background_image(*mlx);
 }
 
-void	initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
-		t_manage_key_param *param)
+void	initialize_state(mlx_t *mlx, mlx_image_t *img,
+		t_coord_matrix *coord_matrix, t_state *state)
 {
-	param->mlx = mlx;
-	param->map = map;
-	param->current_img = img;
-	param->zoom = INITIAL_ZOOM;
+	state->mlx = mlx;
+	state->img = img;
+	state->coord_matrix = coord_matrix;
+	state->zoom = INITIAL_ZOOM;
+	state->z_spacing_ratio = Z_SPACING_RATIO;
 }
 
 void	termination(mlx_t *mlx, t_map *map, t_coord_matrix *coord_matrix)

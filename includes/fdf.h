@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 19:32:53 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:10:46 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ typedef struct s_rot_matrix
 	float			**m;
 }					t_rot_matrix;
 
-typedef struct s_manage_key_param
+typedef struct s_state
 {
 	mlx_t			*mlx;
-	t_map			*map;
-	mlx_image_t		*current_img;
+	mlx_image_t		*img;
+	t_coord_matrix	*coord_matrix;
 	float			zoom;
-}					t_manage_key_param;
+	float			z_spacing_ratio;
+}					t_state;
 
 // check_errors.c
 void				check_argument_count_error(int argc);
@@ -133,8 +134,8 @@ void				manage_key_pressed(void *ptr);
 // initialization_and_termination.c
 void				initialization(int argc, char **argv, mlx_t **mlx,
 						t_map *map);
-void				initialize_param(mlx_t *mlx, t_map *map, mlx_image_t *img,
-						t_manage_key_param *param);
+void				initialize_state(mlx_t *mlx, mlx_image_t *img,
+						t_coord_matrix *coord_matrix, t_state *state);
 void				termination(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
 
@@ -177,5 +178,8 @@ void				perform_point_rot(t_coord_matrix *coord_matrix,
 						t_rot_matrix *rot_matrix, int row, int col);
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
+
+// projection_2d.c
+mlx_image_t			*projection_2d(mlx_t *mlx, t_coord_matrix *coord_matrix);
 
 #endif

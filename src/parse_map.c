@@ -6,16 +6,16 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:02:05 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:56:49 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:06:51 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static bool z_color_defined(t_map *map, int z)
+static bool	z_color_defined(t_map *map, int z)
 {
-	bool found;
-	int i;
+	bool	found;
+	int		i;
 
 	found = false;
 	i = 0;

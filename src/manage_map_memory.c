@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:27:23 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 14:26:30 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:39:21 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	allocate_initial_map_memory(t_map *map)
 {
 	int	i;
 
-	map->color = malloc(INITIAL_COLORS_DIMENSION * sizeof(int));
+	map->color = malloc(INITIAL_COLORS_DIMENSION * sizeof(t_color_entry));
 	check_memory_allocation_error(map->color);
 	map->data = malloc(INITIAL_MAP_DIMENSION * sizeof(int *));
 	check_memory_allocation_error(map->data);

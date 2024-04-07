@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:59:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 16:39:20 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/06 17:19:01 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	perform_rotation(t_coord_matrix *coord_matrix, float theta_x,
 		j = 0;
 		while (j < coord_matrix->ncols)
 		{
-			perform_point_rot(coord_matrix, &rot_matrix_x, i, j);
-			perform_point_rot(coord_matrix, &rot_matrix_y, i, j);
 			perform_point_rot(coord_matrix, &rot_matrix_z, i, j);
+			perform_point_rot(coord_matrix, &rot_matrix_y, i, j);
+			perform_point_rot(coord_matrix, &rot_matrix_x, i, j);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:00:02 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:27:35 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:52:50 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	copy_colors(t_map *map, t_color_entry *new_colors)
 	int	i;
 
 	i = 0;
-	while (i < map->allocated_colors)
+	while (i < map->ncolors)
 	{
 		new_colors[i].z = map->color[i].z;
 		new_colors[i].color = map->color[i].color;

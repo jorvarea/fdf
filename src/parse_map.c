@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:02:05 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:27:17 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:56:49 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ static bool z_color_defined(t_map *map, int z)
 
 static void	store_color(char *element, t_map *map, int data_value)
 {
-	char	*color;
+	char	*color_str;
 	int		i;
 
-	color = NULL;
+	color_str = NULL;
 	i = 0;
-	while (element[i] && !color)
+	while (element[i] && !color_str)
 	{
 		if (element[i] == ',')
-			color = &element[i + 1];
+			color_str = &element[i + 1];
 		i++;
 	}
-	if (color && !z_color_defined(map, data_value))
+	if (color_str && !z_color_defined(map, data_value))
 	{
 		if (map->ncolors + 1 > map->allocated_colors)
 			realloc_map_colors(map);
 		map->color[map->ncolors].z = data_value;
-		map->color[map->ncolors].color = ft_atoi_hex(color);
+		map->color[map->ncolors].color = ft_atoi_hex(color_str);
 		map->ncolors++;
 	}
 }

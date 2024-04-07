@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 18:51:02 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:32:53 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
 # define Z_SPACING_RATIO 0.1
-# define STEPS 1000
-# define INITIAL_ZOOM 0.9
+# define STEPS_CONST 2000000
+# define INITIAL_ZOOM 0.95
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
 

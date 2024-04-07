@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:01:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:26:50 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:19:20 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_alpha_channel(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < map->ncolors)
@@ -24,11 +24,11 @@ void	add_alpha_channel(t_map *map)
 	}
 }
 
-unsigned int find_color(t_map *map, int z)
+unsigned int	find_color(t_map *map, int z)
 {
-	bool found;
-	int i;
-	unsigned int color;
+	bool			found;
+	unsigned int	color;
+	int				i;
 
 	found = false;
 	i = 0;
@@ -63,19 +63,23 @@ static unsigned int	merge_colors(t_color *colors)
 }
 
 unsigned int	color_gradient(unsigned int color_a, unsigned int color_b,
-		float coefficient)
+		float coeff)
 {
-	t_color	colors_a;
-	t_color	colors_b;
-	t_color	result;
+	t_color			colors_a;
+	t_color			colors_b;
+	t_color			result;
+	unsigned int	final_color;
 
-	split_colors(color_a, &colors_a);
-	split_colors(color_b, &colors_b);
-	result.red = (1.0 - coefficient) * colors_a.red + coefficient
-		* colors_b.red;
-	result.green = (1.0 - coefficient) * colors_a.green + coefficient
-		* colors_b.green;
-	result.blue = (1.0 - coefficient) * colors_a.blue + coefficient
-		* colors_b.blue;
-	return (merge_colors(&result));
+	if (color_a != color_b)
+	{
+		split_colors(color_a, &colors_a);
+		split_colors(color_b, &colors_b);
+		result.red = (1.0 - coeff) * colors_a.red + coeff * colors_b.red;
+		result.green = (1.0 - coeff) * colors_a.green + coeff * colors_b.green;
+		result.blue = (1.0 - coeff) * colors_a.blue + coeff * colors_b.blue;
+		final_color = merge_colors(&result);
+	}
+	else
+		final_color = color_a;
+	return (final_color);
 }

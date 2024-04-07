@@ -6,11 +6,27 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:02:05 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 16:09:19 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:27:17 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static bool z_color_defined(t_map *map, int z)
+{
+	bool found;
+	int i;
+
+	found = false;
+	i = 0;
+	while (i < map->ncolors && !found)
+	{
+		if (map->color[i].z == z)
+			found = true;
+		i++;
+	}
+	return (found);
+}
 
 static void	store_color(char *element, t_map *map, int data_value)
 {
@@ -25,11 +41,13 @@ static void	store_color(char *element, t_map *map, int data_value)
 			color = &element[i + 1];
 		i++;
 	}
-	if (color)
+	if (color && !z_color_defined(map, data_value))
 	{
-		if (data_value > map->allocated_colors - 1)
+		if (map->ncolors + 1 > map->allocated_colors)
 			realloc_map_colors(map);
-		map->color[data_value] = ft_atoi_hex(color);
+		map->color[map->ncolors].z = data_value;
+		map->color[map->ncolors].color = ft_atoi_hex(color);
+		map->ncolors++;
 	}
 }
 

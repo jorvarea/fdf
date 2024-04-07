@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:00:02 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/02/25 18:13:32 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:27:35 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,15 @@ void	realloc_map_cols(t_map *map)
 	map->data = new_data;
 }
 
-void	copy_colors(t_map *map, unsigned int *new_colors)
+void	copy_colors(t_map *map, t_color_entry *new_colors)
 {
 	int	i;
 
 	i = 0;
 	while (i < map->allocated_colors)
 	{
-		new_colors[i] = map->color[i];
+		new_colors[i].z = map->color[i].z;
+		new_colors[i].color = map->color[i].color;
 		i++;
 	}
 }
@@ -89,12 +90,12 @@ void	copy_colors(t_map *map, unsigned int *new_colors)
 void	realloc_map_colors(t_map *map)
 {
 	int				new_allocated_colors;
-	unsigned int	*new_colors;
+	t_color_entry	*new_colors;
 
 	new_allocated_colors = map->allocated_colors * 2;
-	new_colors = malloc(new_allocated_colors * sizeof(unsigned int));
+	new_colors = malloc(new_allocated_colors * sizeof(t_color_entry));
 	check_memory_allocation_error(new_colors);
-	ft_memset(new_colors, 0, new_allocated_colors * sizeof(int));
+	ft_memset(new_colors, 0, new_allocated_colors * sizeof(t_color_entry));
 	copy_colors(map, new_colors);
 	free_color_memory(map);
 	map->allocated_colors = new_allocated_colors;

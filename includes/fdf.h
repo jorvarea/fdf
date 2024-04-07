@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 03:15:37 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:32:15 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,23 @@
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
 # define Z_SPACING_RATIO 0.1
-# define INITIAL_ZOOM 0.75
+# define INITIAL_ZOOM 0.9
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
+
+typedef struct s_color_entry
+{
+	int z;
+	unsigned int color;
+}				t_color_entry;
 
 typedef struct s_map
 {
 	int				nrows;
 	int				ncols;
+	int				ncolors;
 	int				**data;
-	unsigned int	*color;
+	t_color_entry	*color;
 	int				allocated_rows;
 	int				allocated_cols;
 	int				allocated_colors;
@@ -101,7 +108,7 @@ void				free_map_memory(t_map *map);
 void				copy_data(t_map *map, int **new_data);
 void				realloc_map_rows(t_map *map);
 void				realloc_map_cols(t_map *map);
-void				copy_colors(t_map *map, unsigned int *new_colors);
+void				copy_colors(t_map *map, t_color_entry *new_colors);
 void				realloc_map_colors(t_map *map);
 
 // parse_map.c
@@ -132,6 +139,7 @@ void				termination(mlx_t *mlx, t_map *map,
 
 // color.c
 void				add_alpha_channel(t_map *map);
+unsigned int 		find_color(t_map *map, int z);
 unsigned int		color_gradient(unsigned int color_a, unsigned int color_b,
 						float coefficient);
 

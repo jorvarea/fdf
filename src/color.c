@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:01:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 15:54:15 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 15:26:50 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,35 @@
 
 void	add_alpha_channel(t_map *map)
 {
-	unsigned int	color;
-	int				row;
-	int				col;
+	int i;
 
-	row = 0;
-	while (row < map->nrows)
+	i = 0;
+	while (i < map->ncolors)
 	{
-		col = 0;
-		while (col < map->ncols)
-		{
-			if (map->color[map->data[row][col]])
-				color = (map->color[map->data[row][col]] << 8) + 0xFF;
-			else
-				color = DEFAULT_COLOR;
-			map->color[map->data[row][col]] = color;
-			col++;
-		}
-		row++;
+		map->color[i].color = (map->color[i].color << 8) + 0xFF;
+		i++;
 	}
+}
+
+unsigned int find_color(t_map *map, int z)
+{
+	bool found;
+	int i;
+	unsigned int color;
+
+	found = false;
+	i = 0;
+	while (i < map->ncolors && !found)
+	{
+		if (map->color[i].z == z)
+			found = true;
+		i++;
+	}
+	if (found)
+		color = map->color[i - 1].color;
+	else
+		color = DEFAULT_COLOR;
+	return (color);
 }
 
 static void	split_colors(unsigned int color, t_color *colors)

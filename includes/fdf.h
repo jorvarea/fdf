@@ -34,9 +34,9 @@
 
 typedef struct s_color_entry
 {
-	int z;
-	unsigned int color;
-}				t_color_entry;
+	int				z;
+	unsigned int	color;
+}					t_color_entry;
 
 typedef struct s_map
 {
@@ -140,7 +140,7 @@ void				termination(mlx_t *mlx, t_map *map,
 
 // color.c
 void				add_alpha_channel(t_map *map);
-unsigned int 		find_color(t_map *map, int z);
+unsigned int		find_color(t_map *map, int z);
 unsigned int		color_gradient(unsigned int color_a, unsigned int color_b,
 						float coefficient);
 

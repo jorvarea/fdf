@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 03:01:02 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 03:15:37 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define DEFAULT_COLOR 0x0000FFFF
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
-# define Z_SPACING_RATIO 0.5
+# define Z_SPACING_RATIO 0.1
 # define INITIAL_ZOOM 0.75
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3

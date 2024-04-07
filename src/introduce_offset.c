@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 02:51:43 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 03:05:03 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 03:35:30 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static float	calculate_x_offset(mlx_image_t *img,
 		}
 		i++;
 	}
-	offset_x = (img->width - (max_x - min_x)) / 2;
+	offset_x = (max_x - min_x) / 2 + (img->width - (max_x - min_x)) / 2;
 	return (offset_x);
 }
 

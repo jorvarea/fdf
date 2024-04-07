@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 02:43:22 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:00:16 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,53 +25,54 @@ static bool	point_inside_img(mlx_image_t *img, float x, float y)
 
 static void	draw_inverse_slope_line(mlx_image_t *img, t_point *a, t_point *b)
 {
+	t_point 		current;
 	float			slope;
-	float			x;
-	float			y;
-	unsigned int	color;
-	float			coefficient;
+	float 			step;
+	int 			i;
+	
 
 	slope = (b->xyz[0] - a->xyz[0]) / (b->xyz[1] - a->xyz[1]);
-	y = a->xyz[1];
-	while (y <= b->xyz[1])
+	current.xyz[1] = a->xyz[1];
+	i = 0;
+	while (i < STEPS)
 	{
-		x = a->xyz[0] + slope * (y - a->xyz[1]);
+		step = (b->xyz[1] - a->xyz[1]) / STEPS;
+		current.xyz[0] = a->xyz[0] + slope * (current.xyz[1] - a->xyz[1]);
 		if (a->color != b->color)
-		{
-			coefficient = (y - a->xyz[1]) / (b->xyz[1] - a->xyz[1]);
-			color = color_gradient(a->color, b->color, coefficient);
-		}
+			current.color = color_gradient(a->color, b->color, 1.0 * i / STEPS);
 		else
-			color = a->color;
-		if (point_inside_img(img, x, y))
-			mlx_put_pixel(img, ft_round(x), ft_round(y), color);
-		y++;
+			current.color = a->color;
+		if (point_inside_img(img, current.xyz[0], current.xyz[1]))
+			mlx_put_pixel(img, ft_round(current.xyz[0]), ft_round(current.xyz[1]), current.color);
+		current.xyz[1] += step;
+		i++;
 	}
 }
 
 static void	draw_line_between_points(mlx_image_t *img, t_point *a, t_point *b)
 {
+	t_point			current;
 	float			slope;
-	float			x;
-	float			y;
-	unsigned int	color;
-	float			coefficient;
+	float 			step;
+	int 			i;
 
 	slope = (b->xyz[1] - a->xyz[1]) / (b->xyz[0] - a->xyz[0]);
 	if (ft_abs_float(slope) <= 1)
 	{
-		x = a->xyz[0];
-		while (x <= b->xyz[0])
+		current.xyz[0] = a->xyz[0];
+		step = (b->xyz[0] - a->xyz[0]) / STEPS;
+		i = 0;
+		while (i < STEPS)
 		{
-			y = a->xyz[1] + slope * (x - a->xyz[0]);
-			coefficient = (x - a->xyz[0]) / (b->xyz[0] - a->xyz[0]);
+			current.xyz[1] = a->xyz[1] + slope * (current.xyz[0] - a->xyz[0]);
 			if (a->color != b->color)
-				color = color_gradient(a->color, b->color, coefficient);
+				current.color = color_gradient(a->color, b->color, 1.0 * i / STEPS);
 			else
-				color = a->color;
-			if (point_inside_img(img, x, y))
-				mlx_put_pixel(img, ft_round(x), ft_round(y), color);
-			x++;
+				current.color = a->color;
+			if (point_inside_img(img, current.xyz[0], current.xyz[1]))
+				mlx_put_pixel(img, ft_round(current.xyz[0]), ft_round(current.xyz[1]), current.color);
+			current.xyz[0] += step;
+			i++;
 		}
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:32:15 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:54:34 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define INITIAL_MAP_DIMENSION 10
 # define INITIAL_COLORS_DIMENSION 20
-# define DEFAULT_COLOR 0x0000FFFF
+# define DEFAULT_COLOR 0xFFA600FF
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
 # define Z_SPACING_RATIO 0.1

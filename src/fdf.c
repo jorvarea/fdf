@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 17:26:52 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 03:06:29 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ mlx_image_t	*projection_2d(mlx_t *mlx, t_coord_matrix *coord_matrix)
 
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	check_mlx_image_error(img);
+	introduce_offset(img, coord_matrix);
 	i = 0;
 	while (i < coord_matrix->nrows)
 	{

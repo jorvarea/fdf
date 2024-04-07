@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 16:11:02 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 03:01:02 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 800
 # define Z_SPACING_RATIO 0.5
-# define IMG_OFFSET 100
 # define INITIAL_ZOOM 0.75
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
@@ -143,6 +142,10 @@ void				free_coord_matrix_memory(t_coord_matrix *coord_matrix);
 void				calculate_coord_matrix(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
 
+// introduce_offset.c
+void				introduce_offset(mlx_image_t *img,
+						t_coord_matrix *coord_matrix);
+
 // manage_rotation_matrix_memory.c
 void				allocate_rot_matrix_memory(t_rot_matrix *rot_matrix,
 						int nrows, int ncols);
@@ -161,6 +164,8 @@ void				calculate_z_rot_matrix(t_rot_matrix *rot_matrix,
 						float theta_z);
 
 // perform_rotation.c
+void				perform_point_rot(t_coord_matrix *coord_matrix,
+						t_rot_matrix *rot_matrix, int row, int col);
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
 

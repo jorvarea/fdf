@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 03:06:29 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:04:12 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	initialization(argc, argv, &mlx, &map);
 	calculate_coord_matrix(mlx, &map, &coord_matrix);
 	perform_rotation(&coord_matrix, atan(sqrt(2)), 0, M_PI / 4);
-	// need to fix color issues and the disappearing lines
+	// fix the random peaks and the color problems
 	img = projection_2d(mlx, &coord_matrix);
 	// review the param initialization and zoom calculations
 	initialize_param(mlx, &map, img, &param);

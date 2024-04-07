@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 20:10:46 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:57:22 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define INITIAL_ZOOM 0.95
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
+# define TRANS_UNIT 10
 
 typedef struct s_color_entry
 {
@@ -85,6 +86,8 @@ typedef struct s_state
 	t_coord_matrix	*coord_matrix;
 	float			zoom;
 	float			z_spacing_ratio;
+	int				translated_x;
+	int				translated_y;
 }					t_state;
 
 // check_errors.c
@@ -178,8 +181,10 @@ void				perform_point_rot(t_coord_matrix *coord_matrix,
 						t_rot_matrix *rot_matrix, int row, int col);
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
+void 				perform_translation(t_coord_matrix *coord_matrix, int offset_x, int offset_y);
 
 // projection_2d.c
-mlx_image_t			*projection_2d(mlx_t *mlx, t_coord_matrix *coord_matrix);
+mlx_image_t			*centered_image(mlx_t *mlx, t_coord_matrix *coord_matrix);
+mlx_image_t			*redraw_image(mlx_t *mlx, t_coord_matrix *coord_matrix);
 
 #endif

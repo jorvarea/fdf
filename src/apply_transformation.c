@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   perform_rotation.c                                 :+:      :+:    :+:   */
+/*   apply_transformation.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:59:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/06 17:19:01 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:45:49 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,24 @@ void	perform_rotation(t_coord_matrix *coord_matrix, float theta_x,
 		i++;
 	}
 	free_all_rot_matrix_memory(&rot_matrix_x, &rot_matrix_y, &rot_matrix_z);
+}
+
+void	perform_translation(t_coord_matrix *coord_matrix, int offset_x,
+		int offset_y)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < coord_matrix->nrows)
+	{
+		j = 0;
+		while (j < coord_matrix->ncols)
+		{
+			coord_matrix->m[i][j].xyz[0] += offset_x;
+			coord_matrix->m[i][j].xyz[1] += offset_y;
+			j++;
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:48:24 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 20:09:02 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:57:47 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	initialize_state(mlx_t *mlx, mlx_image_t *img,
 	state->coord_matrix = coord_matrix;
 	state->zoom = INITIAL_ZOOM;
 	state->z_spacing_ratio = Z_SPACING_RATIO;
+	state->translated_x = 0;
+	state->translated_y = 0;
 }
 
 void	termination(mlx_t *mlx, t_map *map, t_coord_matrix *coord_matrix)

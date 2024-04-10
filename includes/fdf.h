@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/10 22:28:58 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/10 23:27:11 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,22 @@ void				background_image(mlx_t *mlx);
 
 // manage_key_pressed.c
 void				manage_key_pressed(void *ptr);
+
+// manage_key_translations.c
+void 				manage_key_up(t_state *state);
+void 				manage_key_down(t_state *state);
+void 				manage_key_left(t_state *state);
+void 				manage_key_right(t_state *state);
+
+// manage_key_rotations.c
+void 				manage_rot_1(t_state *state);
+void 				manage_rot_1_rev(t_state *state);
+void 				manage_rot_2(t_state *state);
+void 				manage_rot_2_rev(t_state *state);
+
+// manage_key_rotations2.c
+void 				manage_rot_3(t_state *state);
+void 				manage_rot_3_rev(t_state *state);
 
 // initialization_and_termination.c
 void				initialization(int argc, char **argv, mlx_t **mlx,

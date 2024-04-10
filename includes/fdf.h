@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 20:57:22 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:51:32 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ZOOM_UNIT 0.01
 # define ZOOM_LIMIT 3
 # define TRANS_UNIT 10
+# define ROT_UNIT 0.05
 
 typedef struct s_color_entry
 {

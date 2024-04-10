@@ -6,11 +6,35 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:47:08 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/11 01:24:51 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/11 01:29:07 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	manage_key_pressed_2(t_state *state)
+{
+	if (mlx_is_key_down(state->mlx, MLX_KEY_C))
+		manage_rot_3(state);
+	else if (mlx_is_key_down(state->mlx, MLX_KEY_D))
+		manage_rot_3_rev(state);
+	else if (mlx_is_key_down(state->mlx, MLX_KEY_R))
+		manage_reset(state);
+	// if (mlx_is_key_down(state->mlx, MLX_KEY_P))
+	// {
+	// 	if (state->zoom < ZOOM_LIMIT)
+	//  		state->zoom += ZOOM_UNIT;
+	//  	mlx_delete_image(state->mlx, state->img);
+	//  	state->img = top_view(state);
+	// }
+	// else if (mlx_is_key_down(state->mlx, MLX_KEY_O))
+	// {
+	// 	if (state->zoom > 2 * ZOOM_UNIT)
+	//  		state->zoom -= ZOOM_UNIT;
+	// 	mlx_delete_image(state->mlx, state->img);
+	//  state->img = top_view(state);
+	// }
+}
 
 void	manage_key_pressed(void *ptr)
 {
@@ -35,24 +59,6 @@ void	manage_key_pressed(void *ptr)
 		manage_rot_2(state);
 	else if (mlx_is_key_down(state->mlx, MLX_KEY_S))
 		manage_rot_2_rev(state);
-	else if (mlx_is_key_down(state->mlx, MLX_KEY_C))
-		manage_rot_3(state);
-	else if (mlx_is_key_down(state->mlx, MLX_KEY_D))
-		manage_rot_3_rev(state);
-	else if (mlx_is_key_down(state->mlx, MLX_KEY_R))
-		manage_reset(state);
-	// if (mlx_is_key_down(state->mlx, MLX_KEY_P))
-	// {
-	// 	if (state->zoom < ZOOM_LIMIT)
-	//  		state->zoom += ZOOM_UNIT;
-	//  	mlx_delete_image(state->mlx, state->img);
-	//  	state->img = top_view(state);
-	// }
-	// else if (mlx_is_key_down(state->mlx, MLX_KEY_O))
-	// {
-	// 	if (state->zoom > 2 * ZOOM_UNIT)
-	//  		state->zoom -= ZOOM_UNIT;
-	// 	mlx_delete_image(state->mlx, state->img);
-	//  state->img = top_view(state);
-	// }
+	else
+		manage_key_pressed_2(state);
 }

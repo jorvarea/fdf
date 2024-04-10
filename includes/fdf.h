@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/10 16:51:32 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/10 22:28:58 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,10 @@ void				perform_point_rot(t_coord_matrix *coord_matrix,
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
 void 				perform_translation(t_coord_matrix *coord_matrix, int offset_x, int offset_y);
+
+// coordinate_system.c
+void 				change_to_body_coord_system(t_coord_matrix *coord_matrix, t_point *center);
+void 				change_back_coord_system(t_coord_matrix *coord_matrix, t_point *center);
 
 // projection_2d.c
 mlx_image_t			*centered_image(mlx_t *mlx, t_coord_matrix *coord_matrix);

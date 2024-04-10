@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void manage_key_up(t_state *state)
+void	manage_key_up(t_state *state)
 {
 	if (state->translated_y < WINDOW_HEIGHT / 2)
 	{
@@ -23,7 +23,7 @@ void manage_key_up(t_state *state)
 	}
 }
 
-void manage_key_down(t_state *state)
+void	manage_key_down(t_state *state)
 {
 	if (state->translated_y > -WINDOW_HEIGHT / 2)
 	{
@@ -34,7 +34,7 @@ void manage_key_down(t_state *state)
 	}
 }
 
-void manage_key_left(t_state *state)
+void	manage_key_left(t_state *state)
 {
 	if (state->translated_x < WINDOW_WIDTH / 2)
 	{
@@ -45,7 +45,7 @@ void manage_key_left(t_state *state)
 	}
 }
 
-void manage_key_right(t_state *state)
+void	manage_key_right(t_state *state)
 {
 	if (state->translated_x > -WINDOW_WIDTH / 2)
 	{

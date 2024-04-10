@@ -136,20 +136,20 @@ void				background_image(mlx_t *mlx);
 void				manage_key_pressed(void *ptr);
 
 // manage_key_translations.c
-void 				manage_key_up(t_state *state);
-void 				manage_key_down(t_state *state);
-void 				manage_key_left(t_state *state);
-void 				manage_key_right(t_state *state);
+void				manage_key_up(t_state *state);
+void				manage_key_down(t_state *state);
+void				manage_key_left(t_state *state);
+void				manage_key_right(t_state *state);
 
 // manage_key_rotations.c
-void 				manage_rot_1(t_state *state);
-void 				manage_rot_1_rev(t_state *state);
-void 				manage_rot_2(t_state *state);
-void 				manage_rot_2_rev(t_state *state);
+void				manage_rot_1(t_state *state);
+void				manage_rot_1_rev(t_state *state);
+void				manage_rot_2(t_state *state);
+void				manage_rot_2_rev(t_state *state);
 
 // manage_key_rotations2.c
-void 				manage_rot_3(t_state *state);
-void 				manage_rot_3_rev(t_state *state);
+void				manage_rot_3(t_state *state);
+void				manage_rot_3_rev(t_state *state);
 
 // initialization_and_termination.c
 void				initialization(int argc, char **argv, mlx_t **mlx,
@@ -198,11 +198,14 @@ void				perform_point_rot(t_coord_matrix *coord_matrix,
 						t_rot_matrix *rot_matrix, int row, int col);
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
-void 				perform_translation(t_coord_matrix *coord_matrix, int offset_x, int offset_y);
+void				perform_translation(t_coord_matrix *coord_matrix,
+						int offset_x, int offset_y);
 
 // coordinate_system.c
-void 				change_to_body_coord_system(t_coord_matrix *coord_matrix, t_point *center);
-void 				change_back_coord_system(t_coord_matrix *coord_matrix, t_point *center);
+void				change_to_body_coord_system(t_coord_matrix *coord_matrix,
+						t_point *center);
+void				change_back_coord_system(t_coord_matrix *coord_matrix,
+						t_point *center);
 
 // projection_2d.c
 mlx_image_t			*centered_image(mlx_t *mlx, t_coord_matrix *coord_matrix);

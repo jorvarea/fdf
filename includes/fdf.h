@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/10 23:27:11 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:39:25 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define ZOOM_LIMIT 3
 # define TRANS_UNIT 10
 # define ROT_UNIT 0.05
+# define Z_SPACING_UNIT 10
 
 typedef struct s_color_entry
 {
@@ -210,5 +211,8 @@ void				change_back_coord_system(t_coord_matrix *coord_matrix,
 // projection_2d.c
 mlx_image_t			*centered_image(mlx_t *mlx, t_coord_matrix *coord_matrix);
 mlx_image_t			*redraw_image(mlx_t *mlx, t_coord_matrix *coord_matrix);
+
+// menu.c
+void				print_menu(mlx_t *mlx);
 
 #endif

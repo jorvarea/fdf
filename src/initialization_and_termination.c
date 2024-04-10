@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:48:24 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/11 00:21:12 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:38:43 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	initialization(int argc, char **argv, mlx_t **mlx, t_map *map)
 	*mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Fil de fer", true);
 	check_mlx_error(*mlx);
 	background_image(*mlx);
+	print_menu(*mlx);
 }
 
 void	initialize_state(mlx_t *mlx, mlx_image_t *img,

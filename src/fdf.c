@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:53:57 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/11 01:15:19 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/11 01:20:09 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	perform_rotation(&coord_matrix, atan(sqrt(2)), 0, M_PI / 4);
 	img = centered_image(mlx, &coord_matrix);
 	initialize_state(mlx, img, &coord_matrix, &state);
+	initialize_state_continuation(&map, &state);
 	mlx_loop_hook(mlx, manage_key_pressed, &state);
 	mlx_loop(mlx);
 	termination(mlx, &map, &coord_matrix);

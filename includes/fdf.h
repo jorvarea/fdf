@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/11 00:39:25 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/11 01:25:22 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_state
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	t_map			*map;
 	t_coord_matrix	*coord_matrix;
 	float			zoom;
 	float			z_spacing_ratio;
@@ -152,11 +153,15 @@ void				manage_rot_2_rev(t_state *state);
 void				manage_rot_3(t_state *state);
 void				manage_rot_3_rev(t_state *state);
 
+// manage_reset.c
+void				manage_reset(t_state *state);
+
 // initialization_and_termination.c
 void				initialization(int argc, char **argv, mlx_t **mlx,
 						t_map *map);
 void				initialize_state(mlx_t *mlx, mlx_image_t *img,
 						t_coord_matrix *coord_matrix, t_state *state);
+void 				initialize_state_continuation(t_map *map, t_state *state);
 void				termination(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
 

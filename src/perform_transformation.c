@@ -6,11 +6,35 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:59:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 20:45:49 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 21:50:33 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	perform_zoom(t_coord_matrix *coord_matrix, float scale_factor,
+		t_point *focus)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < coord_matrix->nrows)
+	{
+		j = 0;
+		while (j < coord_matrix->ncols)
+		{
+			coord_matrix->m[i][j].xyz[0] = scale_factor
+				* (coord_matrix->m[i][j].xyz[0] - focus->xyz[0])
+				+ focus->xyz[0];
+			coord_matrix->m[i][j].xyz[1] = scale_factor
+				* (coord_matrix->m[i][j].xyz[1] - focus->xyz[1])
+				+ focus->xyz[1];
+			j++;
+		}
+		i++;
+	}
+}
 
 void	perform_point_rot(t_coord_matrix *coord_matrix,
 		t_rot_matrix *rot_matrix, int row, int col)

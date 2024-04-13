@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/13 20:11:46 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 21:52:42 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@
 # define Z_SPACING_RATIO 0.1
 # define STEPS_CONST 2000000
 # define INITIAL_ZOOM 0.95
-# define ZOOM_UNIT 0.01
-# define ZOOM_LIMIT 3
+# define ZOOM_FACTOR 1.05
 # define TRANS_UNIT 10
 # define ROT_UNIT 0.05
 # define Z_SPACING_UNIT 10
@@ -156,6 +155,10 @@ void				manage_rot_3_rev(t_state *state);
 // manage_reset.c
 void				manage_reset(t_state *state);
 
+// manage_key_zoom.c
+void				manage_zoom_in(t_state *state);
+void				manage_zoom_out(t_state *state);
+
 // initialization_and_termination.c
 void				initialization(int argc, char **argv, mlx_t **mlx,
 						t_map *map);
@@ -199,13 +202,15 @@ void				calculate_y_rot_matrix(t_rot_matrix *rot_matrix,
 void				calculate_z_rot_matrix(t_rot_matrix *rot_matrix,
 						float theta_z);
 
-// perform_rotation.c
+// perform_transformation.c
 void				perform_point_rot(t_coord_matrix *coord_matrix,
 						t_rot_matrix *rot_matrix, int row, int col);
 void				perform_rotation(t_coord_matrix *coord_matrix,
 						float theta_x, float theta_y, float theta_z);
 void				perform_translation(t_coord_matrix *coord_matrix,
 						int offset_x, int offset_y);
+void				perform_zoom(t_coord_matrix *coord_matrix,
+						float scale_factor, t_point *focus);
 
 // coordinate_system.c
 void				change_to_body_coord_system(t_coord_matrix *coord_matrix,

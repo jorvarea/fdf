@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/13 21:52:42 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 22:00:58 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define STEPS_CONST 2000000
 # define INITIAL_ZOOM 0.95
 # define ZOOM_FACTOR 1.05
-# define TRANS_UNIT 10
-# define ROT_UNIT 0.05
+# define TRANS_UNIT 50
+# define ROT_UNIT 0.1
 # define Z_SPACING_UNIT 10
 
 typedef struct s_color_entry
@@ -86,10 +86,7 @@ typedef struct s_state
 	mlx_image_t		*img;
 	t_map			*map;
 	t_coord_matrix	*coord_matrix;
-	float			zoom;
 	float			z_spacing_ratio;
-	int				translated_x;
-	int				translated_y;
 }					t_state;
 
 // check_errors.c

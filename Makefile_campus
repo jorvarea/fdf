@@ -58,7 +58,7 @@ $(GET_NEXT_LINE):
 	@echo "${GREEN}Making get_next_line...${NO_COLOR}"
 	@$(MAKE) -C $(GET_NEXT_LINE_DIR)
 
-obj/%.o: src/%.c
+obj/%.o: src/%.c includes/fdf.h
 	@echo "${YELLOW}Compiling $<...${NO_COLOR}"
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) -c $< -o $@

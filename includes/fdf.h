@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/11 01:25:22 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 20:11:46 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <math.h>
 # include <stdio.h>
 
-# define INITIAL_MAP_DIMENSION 10
+# define INITIAL_MAP_DIMENSION 100
 # define INITIAL_COLORS_DIMENSION 20
 # define DEFAULT_COLOR 0xFFA600FF
 # define WINDOW_WIDTH 1400

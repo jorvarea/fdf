@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:00:02 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:52:50 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 20:11:37 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	copy_data(t_map *map, int **new_data)
 	int	j;
 
 	i = 0;
-	while (i < map->nrows)
+	while (i < map->allocated_rows)
 	{
 		j = 0;
-		while (j < map->ncols)
+		while (j < map->allocated_cols)
 		{
 			new_data[i][j] = map->data[i][j];
 			j++;

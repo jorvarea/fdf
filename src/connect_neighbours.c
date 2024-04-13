@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:14:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 19:35:32 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 20:23:25 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	draw_inverse_slope_line(mlx_image_t *img, t_point *a, t_point *b,
 	{
 		step = (b->xyz[1] - a->xyz[1]) / total_steps;
 		current.xyz[0] = a->xyz[0] + slope * (current.xyz[1] - a->xyz[1]);
-		current.color = color_gradient(a->color, b->color, 
+		current.color = color_gradient(a->color, b->color,
 				1.0 * i / total_steps);
 		if (point_inside_img(img, current.xyz[0], current.xyz[1]))
 			mlx_put_pixel(img, ft_round(current.xyz[0]),
@@ -65,7 +65,7 @@ static void	draw_line_between_points(mlx_image_t *img, t_point *a, t_point *b,
 		while (i < total_steps)
 		{
 			current.xyz[1] = a->xyz[1] + slope * (current.xyz[0] - a->xyz[0]);
-			current.color = color_gradient(a->color, b->color, 
+			current.color = color_gradient(a->color, b->color,
 					1.0 * i / total_steps);
 			if (point_inside_img(img, current.xyz[0], current.xyz[1]))
 				mlx_put_pixel(img, ft_round(current.xyz[0]),

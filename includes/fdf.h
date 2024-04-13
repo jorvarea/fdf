@@ -161,7 +161,7 @@ void				initialization(int argc, char **argv, mlx_t **mlx,
 						t_map *map);
 void				initialize_state(mlx_t *mlx, mlx_image_t *img,
 						t_coord_matrix *coord_matrix, t_state *state);
-void 				initialize_state_continuation(t_map *map, t_state *state);
+void				initialize_state_continuation(t_map *map, t_state *state);
 void				termination(mlx_t *mlx, t_map *map,
 						t_coord_matrix *coord_matrix);
 

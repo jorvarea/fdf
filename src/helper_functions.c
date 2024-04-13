@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 02:43:03 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/07 15:29:32 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 20:20:06 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_colors(t_map *map)
 		red = (map->color[i].color >> 16) & 0xFF;
 		green = (map->color[i].color >> 8) & 0xFF;
 		blue = map->color[i].color & 0xFF;
-		ft_printf("\033[38;2;%d;%d;%dm%d: 0x%X\033[0m\n", red, green, blue, 
+		ft_printf("\033[38;2;%d;%d;%dm%d: 0x%X\033[0m\n", red, green, blue,
 			map->color[i].z, map->color[i].color);
 		i++;
 	}

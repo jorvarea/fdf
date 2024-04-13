@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/13 22:00:58 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/13 22:22:37 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <stdio.h>
 
+// Initial constants
 # define INITIAL_MAP_DIMENSION 100
 # define INITIAL_COLORS_DIMENSION 20
 # define DEFAULT_COLOR 0xFFA600FF
@@ -29,10 +30,12 @@
 # define Z_SPACING_RATIO 0.1
 # define STEPS_CONST 2000000
 # define INITIAL_ZOOM 0.95
+# define Z_SPACING_UNIT 10
+
+// Transformation constants
 # define ZOOM_FACTOR 1.05
 # define TRANS_UNIT 50
 # define ROT_UNIT 0.1
-# define Z_SPACING_UNIT 10
 
 typedef struct s_color_entry
 {

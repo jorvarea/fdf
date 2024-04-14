@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:47:08 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/13 21:52:01 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:05:11 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void	manage_key_pressed_2(t_state *state)
 		manage_zoom_in(state);
 	else if (mlx_is_key_down(state->mlx, MLX_KEY_O))
 		manage_zoom_out(state);
+	else if (mlx_is_key_down(state->mlx, MLX_KEY_1))
+		manage_top_view(state);
+	else if (mlx_is_key_down(state->mlx, MLX_KEY_2))
+		manage_elevation(state);
+	else if (mlx_is_key_down(state->mlx, MLX_KEY_3))
+		manage_profile1(state);
+	else if (mlx_is_key_down(state->mlx, MLX_KEY_4))
+		manage_profile2(state);
 }
 
 void	manage_key_pressed(void *ptr)

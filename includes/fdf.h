@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:33:48 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/13 22:22:37 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:04:38 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,12 @@ void				manage_rot_3_rev(t_state *state);
 
 // manage_reset.c
 void				manage_reset(t_state *state);
+
+// manage_perspective.c
+void				manage_top_view(t_state *state);
+void				manage_elevation(t_state *state);
+void				manage_profile1(t_state *state);
+void				manage_profile2(t_state *state);
 
 // manage_key_zoom.c
 void				manage_zoom_in(t_state *state);

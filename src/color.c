@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:01:18 by jorvarea          #+#    #+#             */
-/*   Updated: 2024/04/13 20:20:24 by jorvarea         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:31:54 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ unsigned int	find_color(t_map *map, int z)
 	}
 	if (found)
 		color = map->color[i - 1].color;
+	else if (z <= 0)
+		color = DEFAULT_COLOR_0;
 	else
-		color = DEFAULT_COLOR;
+		color = DEFAULT_COLOR_1;
 	return (color);
 }
 

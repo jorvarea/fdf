@@ -22,7 +22,32 @@ MLX42					= $(MLX42_DIR)/build/libmlx42.a
 LIBRARIES               = $(LIBFT) $(PRINTF) $(GET_NEXT_LINE) $(MLX42)
 
 ## Source and object files ##
-SOURCE_FILES   			= $(wildcard src/*.c) # Change this eventually
+SOURCE_FILES 			= src/background_image.c \
+							src/check_errors.c \
+							src/manage_key_pressed.c \
+							src/manage_perspectives.c \
+							src/projection_2d.c \
+							src/calculate_rotation_matrix.c \
+							src/check_errors2.c \
+							src/manage_key_rotations.c \
+							src/manage_reset.c \
+							src/realloc_memory.c \
+							src/color.c \
+							src/fdf.c \
+							src/manage_key_rotations2.c \
+							src/manage_rotation_matrix_memory.c \
+							src/connect_neighbours.c \
+							src/helper_functions.c \
+							src/manage_key_translations.c \
+							src/menu.c \
+							src/coord_matrix.c \
+							src/initialization_and_termination.c \
+							src/manage_key_zoom.c \
+							src/parse_map.c \
+							src/coordinate_system.c \
+							src/introduce_offset.c \
+							src/manage_map_memory.c \
+							src/perform_transformation.c
 OBJECT_FILES			= $(SOURCE_FILES:src/%.c=obj/%.o)
 
 ## Compiler settings ##

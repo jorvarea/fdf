@@ -60,11 +60,7 @@ INCLUDE_HEADERS			= -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(GET_NEXT_LINE_
 MLX42_FLAGS				= -ldl -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit
 CFLAGS 					= -Wall -Werror -Wextra $(INCLUDE_HEADERS)
 
-all: submodules $(NAME)
-
-submodules:
-	@git submodule init
-	@git submodule update
+all: $(NAME)
 
 $(NAME): $(LIBRARIES) $(OBJECT_FILES) includes/fdf.h
 	@echo "${YELLOW}Linking $(NAME)...${NO_COLOR}"
@@ -106,4 +102,4 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all submodules clean fclean re
+.PHONY: all clean fclean re
